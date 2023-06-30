@@ -1,0 +1,102 @@
+/* Elements styling */
+
+textarea {
+    resize: none;
+    width: 500px;
+    max-width: 100%;
+}
+
+input:focus {
+    outline: none;
+
+}
+
+
+/* Edited Bootstrap */
+
+.vr {
+    width: 1px;
+    background-color: white!important;
+}
+
+
+/* Navbar styling */
+
+.dropdown-item:hover {
+    background-color: #6F53CA;
+}
+
+
+/* PostDetail styling */
+
+.post-title-space {
+    margin-left: 25%;
+}
+
+.post-detail-img {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Allauth templates and Form styling */
+
+#login-header {
+    border-right: 1px solid black;
+}
+
+#signup_form > p > label {
+    display: none;
+}
+
+#signup_form > p > input {
+    font-size: 28px;
+}
+
+.login > div > input {
+    font-size: 28px;
+}
+
+
+/* Colors */
+
+.slate {
+    color: #6F53CA;
+}
+
+.bg-slate {
+    background-color: #6F53CA;
+}
+
+.feldgrau {
+    color: #3F5E5A;
+}
+
+.bg-feldgrau {
+    background-color: #3F5E5A;
+}
+
+.alice {
+    color: #E4EBF1;
+}
+
+.bg-alice {
+    background-color: #E4EBF1;
+}
+
+.purple {
+    color: #3E283E;
+}
+
+.bg-purple {
+    background-color: #3E283E;
+}
+
+.cinnabar {
+    color: #E55934;
+}
+
+.bg-cinnabar {
+    background-color: #E55934;
+}

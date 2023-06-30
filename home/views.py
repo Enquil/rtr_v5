@@ -13,7 +13,7 @@ class PostList(ListView):
     '''
     model = Post
     ordering = ['-created_on']
-    template_name = "newssite/index.html"
+    template_name = "home/index.html"
     # number of items to be displayed per page
     paginate_by = 2
 
