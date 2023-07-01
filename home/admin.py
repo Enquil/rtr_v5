@@ -1,10 +1,9 @@
 from django.contrib import admin
 from .models import Post, Comment, Category
-from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):
+class PostAdmin(admin.ModelAdmin):
 
     list_filter = ('status', 'author')
 

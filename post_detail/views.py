@@ -38,7 +38,7 @@ def post_detail(request, slug, *args, **kwargs):
                 'Your comment has beens posted!'
             )
         else:
-            comment_form = CommentForm()
+            comment_form = CommentForm(data=comment_form)
     else:
         comment_form = CommentForm()
 

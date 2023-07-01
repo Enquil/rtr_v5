@@ -1,7 +1,6 @@
 from home.models import Post
 from django.contrib.auth.models import User
 from django import forms
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 from django.utils.translation import gettext_lazy as _
 
 
@@ -30,12 +29,11 @@ class PostForm(forms.ModelForm):
                     'class': 'mb-2',
                 }),
 
-            'content': SummernoteWidget(
+            'content': forms.Textarea(
                 attrs={
-                    'summernote': {
-                        'width': '100%',
-                        'height': '400px'
-                    }
+                    'style': 'width: 100%',
+                    'cols': 100, 'rows': 10,
+                    'class': 'mb-2',
                 }),
 
             'excerpt': forms.Textarea(
