@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
-    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
+    path('<slug:slug>/', views.post_detail, name='post_detail'),
+    path('like/<slug:slug>', views.post_like, name='post_like'),
 ]
