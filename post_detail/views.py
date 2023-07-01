@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from home.models import Post
 from .forms import CommentForm
+from django.contrib.auth.decorators import login_required
 
 
 def post_detail(request, slug, *args, **kwargs):
@@ -37,6 +38,7 @@ def post_detail(request, slug, *args, **kwargs):
                 request, messages.SUCCESS,
                 'Your comment has beens posted!'
             )
+            comment_form = CommentForm()
         else:
             comment_form = CommentForm()
     else:
