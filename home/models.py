@@ -115,11 +115,6 @@ class Comment(models.Model):
     body = models.TextField(max_length=300)
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=True)
-    likes = models.ManyToManyField(
-        User,
-        related_name='comment_likes',
-        blank=True
-    )
     parent = models.ForeignKey(
         'self',
         null=True,
