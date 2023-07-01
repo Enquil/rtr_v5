@@ -132,10 +132,6 @@ class CommentModelTest(TestCase):
     def setUp(self):
 
         category = Category.objects.create(
-            friendly_name='General',
-        )
-
-        category2 = Category.objects.create(
             friendly_name='Art and Entertainment'
         )
 
@@ -163,7 +159,7 @@ class CommentModelTest(TestCase):
             title='Calculating machines',
             author=user2,
             content="Sometimes, 1 is 0",
-            category=category2,
+            category=category,
         )
 
         comment = Comment.objects.create(
