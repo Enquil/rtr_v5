@@ -5,5 +5,4 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('', views.create_post, name='create_post'),
-    url(r'upload_post', views.upload_post, name='upload_post')
 ]
