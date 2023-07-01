@@ -8,7 +8,7 @@ from .forms import CommentForm
 
 def post_detail(request, slug, *args, **kwargs):
     """
-
+    Sourced from CodeInstitute
     """
 
     queryset = Post.objects.filter(status=1)
