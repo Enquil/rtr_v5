@@ -48,8 +48,7 @@ class CategoryModelTest(TestCase):
             id=2
         )
         self.assertEqual(
-            Category.get_friendly_name(Category.objects.get(
-                id=2)),
+            category.get_friendly_name(),
             category.friendly_name
         )
 
