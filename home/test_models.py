@@ -23,6 +23,11 @@ class CategoryModelTest(TestCase):
         )
 
     def test_category_names(self):
+        '''
+        Test if category.name saves as expected from custom save() method
+        The redundancy of objects is to check what happens
+        with spaces in save()
+        '''
 
         category_a = Category.objects.get(
             id=1
@@ -34,7 +39,6 @@ class CategoryModelTest(TestCase):
             id=3
         )
 
-        # Check that names saves as expected from custom save() method
         self.assertEqual(category_a.name, 'general')
         self.assertEqual(category_b.name, 'art_entertainment')
         self.assertEqual(category_c.name, 'andy_the_bandwagon')
@@ -115,7 +119,7 @@ class PostModelTest(TestCase):
 
     def test_post_slug(self):
         '''
-        Checks the slugify function on the post model
+        Tests the slugify function on the post model
         which was not declared @ setUp()
         '''
         test_post = Post.objects.get(id=1)
@@ -137,7 +141,7 @@ class PostModelTest(TestCase):
         Tests the Post.number_of_likes() returns the correct value
         '''
         test_post = Post.objects.get(id=1)
-        # Sets 
+        # Sets post.likes to 2 (1 and 2 are user.ids)
         test_post.likes.set(('1', '2'))
         # Should equal 2
         self.assertEqual(Post.number_of_likes(test_post), 2)
