@@ -38,3 +38,6 @@ class CreatePostViewTest(TestCase):
         response = self.client.get('/create_post/')
 
         self.assertEqual(response.status_code, 302)
+        self.assertRedirects(
+            response, expected_url='/accounts/login/?next=/create_post/'
+        )
