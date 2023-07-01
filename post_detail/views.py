@@ -29,7 +29,7 @@ def post_detail(request, slug, *args, **kwargs):
         if comment_form.is_valid():
 
             comment_form.instance.email = request.user.email
-            comment_form.instance.author = request.user.username
+            comment_form.instance.author = request.user
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()

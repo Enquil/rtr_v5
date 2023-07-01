@@ -68,6 +68,7 @@ class TestPostView(TestCase):
         self.assertTrue(post.comments.count() == 0)
         # Mocks a comment posted by user @ post
         response = self.client.post(reverse('post_detail', args=[post.slug]), {
+            'author': user,
             'body': 'This is a test comment'
         })
         '''
@@ -95,7 +96,7 @@ class TestPostView(TestCase):
         # Likes the post, then checks if boolean is updated to True
         response = self.client.post(reverse('post_like', args=[post.slug]))
         response = self.client.get(reverse('post_detail', args=[post.slug]))
-        self.assertTrue(response.context['liked'] is False)
+        self.assertTrue(response.context['liked'] is True)
 
     def test_comment_form_is_passed(self):
 

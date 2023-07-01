@@ -46,6 +46,7 @@ In general:
 
 https://dbdiagram.io/d/649b270a02bd1c4a5e274ea3
 ![Data Models](./images/datamodels.png)
+
 ### Post
 
 ### Comment
