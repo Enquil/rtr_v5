@@ -11,18 +11,16 @@ from .models import UserProfile
 
 def profile_view(request):
 
-    def get(self, request, *args, **kwargs):
+    profile = get_object_or_404(UserProfile, id=request.user.id)
+    posts = Post.objects.filter(author=profile.user.id)
+    comments = Comment.objects.filter(author=profile.user.id)
 
-        profile = get_object_or_404(UserProfile, user=request.user)
-        posts = Post.objects.filter(author=profile.user.id)
-        comments = Comment.objects.filter(author=profile.user.id)
-
-        return render(
-            request,
-            "profiles/profile.html",
-            {
-                'profile': profile,
-                'posts': posts,
-                'comments': comments,
-            },
-        )
+    return render(
+        request,
+        "profiles/profile.html",
+        {
+            'profile': profile,
+            'posts': posts,
+            'comments': comments,
+        },
+    )
