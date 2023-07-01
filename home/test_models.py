@@ -39,7 +39,14 @@ class CategoryModelTest(TestCase):
         self.assertEqual(category_b.name, 'art_entertainment')
         self.assertEqual(category_c.name, 'andy_the_bandwagon')
 
-    def test_post_friendly_name(self):
+    def test_category_str_method(self):
+        '''
+        Tests if __str__ method returns category.name correctly
+        '''
+        category = Category.objects.get(id=1)
+        self.assertEqual(str(category), category.name)
+
+    def test_category_friendly_name(self):
         '''
         Tests if get_friendly_name(category)
         gets properly
@@ -89,7 +96,7 @@ class PostModelTest(TestCase):
             category=category,
         )
 
-    def test_post_str(self):
+    def test_post_str_method(self):
         '''
         Tests if __str__ method returns post.title
         '''
@@ -118,12 +125,22 @@ class PostModelTest(TestCase):
 
     def test_published_by_default(self):
         '''
-        Checks that default status on
+        Tests if default status on posts are 1
         '''
         test_post = Post.objects.get(id=1)
         test_post2 = Post.objects.get(id=2)
         self.assertEqual(test_post.status, 1)
         self.assertEqual(test_post2.status, 1)
+
+    def test_post_likes_count(self):
+        '''
+        Tests the Post.number_of_likes() returns the correct value
+        '''
+        test_post = Post.objects.get(id=1)
+        # Sets 
+        test_post.likes.set(('1', '2'))
+        # Should equal 2
+        self.assertEqual(Post.number_of_likes(test_post), 2)
 
 
 class CommentModelTest(TestCase):
