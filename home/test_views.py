@@ -12,7 +12,13 @@ from django.http import (HttpResponse,
 
 class TestPostList(TestCase):
 
-    def setUp():
+    def setUp(self):
+
+        user = User.objects.create(
+            username='alan',
+            is_superuser=True,
+            password='enigma'
+        )
 
         category = Category.objects.create(
             friendly_name='General',
@@ -31,7 +37,7 @@ class TestPostList(TestCase):
 
         post2 = Post.objects.create(
             title='Calculating machines',
-            author=user2,
+            author=user,
             content="sometimes, 1 is 0",
             category=category2,
         )
@@ -46,3 +52,4 @@ class TestPostList(TestCase):
 
         post = Post.objects.get(id=1)
         post2 = Post.objects.get(id=2)
+        response = self.client.get('/')
