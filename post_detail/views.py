@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from home.models import Post
 from .forms import CommentForm
-from django.contrib.auth.decorators import login_required
 
 
 def post_detail(request, slug, *args, **kwargs):
