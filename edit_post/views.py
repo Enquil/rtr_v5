@@ -2,15 +2,45 @@ from django.shortcuts import render, get_object_or_404, reverse
 from create_post.forms import PostForm
 from home.models import Post, Category
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect
 
 @login_required
 def edit_post(request, slug):
     """
     view to edit comments
+    Sourced From CodeInstitute
+    (Just a spin on the edit_comment view)
     """
+
+    # If request.POST
     if request.method == 'POST':
-        return render(
+
+        # gets posts with status = 1
+        queryset = Post.objects.filter(status=1)
+        # gets the post from queryset using slug as filter
+        post = queryset.filter(slug=slug).first()
+        # saves slug for redirect
+        slug = post.slug
+        # get post data in a variable
+        post_form = PostForm(data=request.POST, instance=post)
+
+        # if all fields are good:
+        if post_form.is_valid():
+            # Check if post.author matches user trying to edit the post
+            if post.author == request.user:
+                post = post_form.save(commit=False)
+                post.author = request.user
+                post.save()
+                messages.add_message(request, messages.SUCCESS, 'Post Updated!')
+                return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+            # If user doesent match post.author
+            else:
+                raise PermissionDenied
+        else:
+            form = PostForm(data=form)
+            return render(
                 request,
                 "create_post/create_post.html",
                 {
@@ -30,36 +60,5 @@ def edit_post(request, slug):
                     "post_form": PostForm(instance=post)
                 },
             )
-
-# from django.views import View
-# from django.shortcuts import render
-# from home.models import Post
-# from django.contrib.auth.models import User
-# from django.contrib import messages
-# from django.shortcuts import (render, get_object_or_404,
-#                               redirect, reverse)
-# from django.http import (HttpResponse,
-#                          HttpResponseRedirect)
-# from create_post.forms import PostForm
-# from django.views.generic import UpdateView
-# from django.http import Http404
-# from django.core.exceptions import PermissionDenied
-
-
-# class EditPost(UpdateView):
-
-#     model = Post
-#     form_class = PostForm
-#     template_name = "edit_post/edit_post.html"
-#     success_url = "/profile/"
-
-#     def get_object(self, *args, **kwargs):
-#         post = super(EditPost, self).get_object(*args, **kwargs)
-#         if not post.author == self.request.user:
-#             raise PermissionDenied
-#         return post
-
-#     def form_valid(self, form):
-#         # This method is called when valid form data has been POSTed.
-#         # It should return an HttpResponse.
-#         return super().form_valid(form)
+        else:
+            raise PermissionDenied
