@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, reverse
+from django.views import generic
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from home.models import Post
+from .forms import CommentForm
 
 
 def post_detail(request, slug, *args, **kwargs):
@@ -10,6 +15,7 @@ def post_detail(request, slug, *args, **kwargs):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+
     liked = False
     commented = False
 
@@ -17,14 +23,20 @@ def post_detail(request, slug, *args, **kwargs):
         liked = True
 
     if request.method == "POST":
+
         comment_form = CommentForm(data=request.POST)
+
         if comment_form.is_valid():
+
             comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment awaiting moderation.')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Your comment has beens posted!'
+            )
         else:
             comment_form = CommentForm()
     else:
@@ -32,7 +44,7 @@ def post_detail(request, slug, *args, **kwargs):
 
     return render(
         request,
-        "post_detail.html",
+        'post_detail/post_detail.html',
         {
             "post": post,
             "comments": comments,
@@ -41,6 +53,7 @@ def post_detail(request, slug, *args, **kwargs):
             "comment_form": comment_form
         },
     )
+
 
 def post_like(request, slug, *args, **kwargs):
     """
