@@ -58,8 +58,10 @@ INSTALLED_APPS = [
     # summernote
     'django_summernote',
 
+    # apps
     'home',
     'post_detail',
+    'create_post',
     'profiles',
 ]
 

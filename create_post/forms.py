@@ -1,4 +1,4 @@
-from newssite.models import Post
+from home.models import Post
 from django.contrib.auth.models import User
 from django import forms
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget

@@ -9,7 +9,7 @@ from django.contrib import messages
 from .models import UserProfile
 
 
-class ProfileView(View):
+def profile_view(request):
 
     def get(self, request, *args, **kwargs):
 
