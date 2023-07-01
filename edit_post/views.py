@@ -30,23 +30,33 @@ def edit_post(request, slug):
         if post_form.is_valid():
             # Check if post.author matches user trying to edit the post
             if post.author == request.user:
+                # save post (false commit) and make post.author request.user
                 post = post_form.save(commit=False)
                 post.author = request.user
+                # save post for real
                 post.save()
-                messages.add_message(request, messages.SUCCESS, 'Post Updated!')
-                return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+                # Redirect to Post with a success message
+                messages.add_message(
+                    request, messages.SUCCESS, 'Post Updated!'
+                )
+                return HttpResponseRedirect(
+                    reverse('post_detail', args=[slug])
+                )
             # If user doesent match post.author
             else:
                 raise PermissionDenied
+        # Should something be missing in the form:
         else:
             form = PostForm(data=form)
             return render(
                 request,
-                "create_post/create_post.html",
+                "edit_post/edit_post.html",
                 {
                     "post_form": PostForm()
                 },
             )
+
     else:
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -55,7 +65,7 @@ def edit_post(request, slug):
 
             return render(
                 request,
-                "create_post/create_post.html",
+                "edit_post/edit_post.html",
                 {
                     "post_form": PostForm(instance=post)
                 },
