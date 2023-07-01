@@ -22,11 +22,18 @@ def create_post(request):
 
     if request.method == 'POST':
 
-        post_form = PostForm(data=request.POST)
-        print(post_form)
+        form_data = {
+            'title': request.POST['title'],
+            'category': request.POST['email'],
+            'excerpt': request.POST['excerpt'],
+            'content': request.POST['content'],
+        }
+        post_form = PostForm(form_data)
+
         if post_form.is_valid():
 
             user = User.objects.get(id=request.user.id)
+            print(user)
             post_form.instance.author = request.user
             post = post_form.save(commit=False)
             post.save()
@@ -35,12 +42,23 @@ def create_post(request):
                 request, messages.SUCCESS,
                 'Your post was successful!'
             )
-            return HttpResponseRedirect(
-                                        reverse(
-                                                'post_detail',
-                                                args=[post.slug]
+            return render(
+                                        request(
+                                                '/'
                                         ))
         else:
             post_form = PostForm(data=post_form)
     else:
         post_form = PostForm()
+
+
+def upload_post(request):
+
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.instance.author = request.user
+            form.save()
+        else:
+            form = PostForm()
+    return render(request, '/create_post/create_post.html')
