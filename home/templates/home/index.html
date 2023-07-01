@@ -53,12 +53,6 @@
                             </h2>
                             <hr class="w-75" style="margin-left: 12.5%;">
 
-                            {% if "placeholder" not in post.featured_image.url %}
-                                <img class="m-2 mx-auto d-block"
-                                    style="max-width: 300px; height: auto;"
-                                    src="{{ post.featured_image.url }}">
-                            {% endif %}
-
                             {% if post.excerpt %}
                                 <p class="mt-4 mx-2">{{ post.excerpt }}</p>
                             {% endif %}

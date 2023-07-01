@@ -62,7 +62,6 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='posts'
     )
-    is_edited = models.BooleanField(default=False)
     excerpt = models.TextField(max_length=300, null=True, blank=True)
     content = models.TextField()
     category = models.ForeignKey(
@@ -72,7 +71,6 @@ class Post(models.Model):
         blank=True,
         on_delete=models.SET_NULL
     )
-    featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=1)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)

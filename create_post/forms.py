@@ -17,7 +17,6 @@ class PostForm(forms.ModelForm):
 
         fields = (
             'title', 'category',
-            'featured_image',
             'excerpt', 'content',
         )
 
@@ -42,12 +41,6 @@ class PostForm(forms.ModelForm):
                     'class': 'mb-2',
                 }),
 
-            'featured_image': forms.FileInput(
-                attrs={
-                    'style': 'width: 189px;',
-                    'class': 'mb-3',
-                }),
-
             'category': forms.Select(
                 attrs={
                     'style': 'width: 189px; height: 30px',
@@ -57,5 +50,4 @@ class PostForm(forms.ModelForm):
 
         labels = {
             'title': 'Choose your Title',
-            'featured_image': 'Select an image',
         }
