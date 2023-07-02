@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 def create_post(request):
 
     if request.method == 'POST':
+        print(request.POST.kwargs)
         form = PostForm(request.POST)
         if form.is_valid():
             form.instance.author = request.user
