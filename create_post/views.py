@@ -20,9 +20,8 @@ def create_post(request):
             post_form.instance.author = request.user
             post = post_form.save(commit=False)
             post.save()
-            print(post.slug)
         else:
-            form = PostForm(data=form)
+            form = PostForm()
 
         '''
         if form is valid and user is logged in

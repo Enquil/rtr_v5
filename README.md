@@ -39,6 +39,9 @@ In general:
     * Extended admin control (manipulating querysets from the admin-panel in various ways)
 
 #### Sprint 3, 26/6-3/7
+    * Delete Functionality for users
+    * 
+
 
 ## Models
 
@@ -49,11 +52,12 @@ https://dbdiagram.io/d/649b270a02bd1c4a5e274ea3
 
 ### Post
 
+
+
 ### Comment
 
 ### UserProfile
 
-## Models
 
 ## Design
 

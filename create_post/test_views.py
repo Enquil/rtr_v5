@@ -49,24 +49,40 @@ class CreatePostViewTest(TestCase):
             response, expected_url='/accounts/login/?next=/create_post/'
         )
 
-    # def test_post_create_post_user(self):
+    def test_post_create_post_user(self):
 
-    #     user = User.objects.get(id=1)
-    #     self.client.force_login(user)
+        user = User.objects.get(id=1)
+        self.client.force_login(user)
 
-    #     data = {
-    #          'title': 'new title 1234',
-    #          'author': user,
-    #          'excerpt': 'new excerpt',
-    #          'content': 'new content',
-    #          'category': 1,
-    #          'created_on': datetime.now(),
-    #          'status': 1,
-    #     }
-    #     # post_form = PostForm(instance=data)
-    #     response = self.client.get('/create_post/')
+        post_data = {
+             'title': 'new title 1234',
+             'author': user,
+             'excerpt': 'new excerpt',
+             'content': 'new content',
+             'category': 1,
+             'created_on': datetime.now(),
+             'status': 1,
+        }
 
-    #     response = self.client.post('create_post', data)
-    #     print(response.form.error)
-    #     obj = Post.objects.all()
-    #     print(len(post.objects.all()))
+        response = self.client.get('/create_post/')
+
+        # First get all posts and make sure there's none
+        posts = Post.objects.all()
+        self.assertEqual(len(posts), 0)
+
+        # send a post request, it should then redirect to the post_detail view
+        response = self.client.post(reverse('create_post'), data=post_data)
+
+        # status_code should be 302
+        self.assertEqual(response.status_code, 302)
+        # expected url is: /post_detail/ + the post.slug
+        self.assertRedirects(
+            response, expected_url='/post_detail/new-title-1234-alan1/'
+        )
+
+        # gets all posts again, (if any exists)
+        posts = Post.objects.all()
+        # Should return one if post.method was successful on view
+        self.assertEqual(len(posts), 1)
+        # Finally, let's see if that post matches the data we posted
+        self.assertAlmostEqual(posts[0].title, 'new title 1234')

@@ -75,10 +75,8 @@
                     <small> | {{ comment.created_on }}</small>
                     <p class="mb-1 ms-2">{{ comment.body }}</p>
 
-                    {% comment %}
-                        for loop iterating comments,
-                        if statement appends an hr tag to last comment
-                    {% endcomment %}
+                    <!--for loop iterating comments,
+                        if statement appends an hr tag to last comment-->
 
                     {% if forloop.counter == comments.count %}
                         <hr>
