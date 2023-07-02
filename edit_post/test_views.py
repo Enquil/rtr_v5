@@ -100,6 +100,7 @@ class EditPostViewTest(TestCase):
         user = User.objects.get(id=1)
         self.client.force_login(user)
 
+        # new form data to be sent with post request
         data = {
              'title': 'new title 1234',
              'author': user,

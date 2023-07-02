@@ -15,19 +15,25 @@ from django.contrib.auth.decorators import login_required
 def create_post(request):
 
     if request.method == 'POST':
-        print(request.POST.kwargs)
-        form = PostForm(request.POST)
-        if form.is_valid():
-            form.instance.author = request.user
-            form.save()
+        post_form = PostForm(data=request.POST)
+        if post_form.is_valid():
+            post_form.instance.author = request.user
+            post = post_form.save(commit=False)
+            post.save()
+            print(post.slug)
         else:
             form = PostForm(data=form)
-        return render(
-            request,
-            "create_post/create_post.html",
-            {
-                "post_form": PostForm()
-            },
+
+        '''
+        if form is valid and user is logged in
+        add success message and redirect to the created post
+        '''
+        messages.add_message(
+                request, messages.SUCCESS,
+                'Post was successful!'
+            )
+        return HttpResponseRedirect(
+            reverse('post_detail', args=[post.slug])
         )
     else:
         return render(
@@ -37,15 +43,3 @@ def create_post(request):
                 "post_form": PostForm()
             },
         )
-
-
-# def upload_post(request):
-
-#     if request.method == 'POST':
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             form.instance.author = request.user
-#             form.save()
-#         else:
-#             form = PostForm(data=form)
-#     return HttpResponseRedirect(reverse('/'))

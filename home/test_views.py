@@ -56,3 +56,10 @@ class TestPostList(TestCase):
         post = Post.objects.get(id=1)
         post2 = Post.objects.get(id=2)
         response = self.client.get('/')
+
+    def test_filter_by_category(self):
+        posts = Post.objects.all()
+        response = self.client.get('/')
+        self.assertEqual(len(response.context['post_list']), 2)
+        response = self.client.get('/?category=1')
+        self.assertEqual(len(response.context['post_list']), 1)
