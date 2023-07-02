@@ -58,8 +58,16 @@ class TestPostList(TestCase):
         response = self.client.get('/')
 
     def test_filter_by_category(self):
+
+        # gets all posts and checks how many there are, should return 2
         posts = Post.objects.all()
         response = self.client.get('/')
         self.assertEqual(len(response.context['post_list']), 2)
+
+        # Should return 1 post with a category of
         response = self.client.get('/?category=1')
+
         self.assertEqual(len(response.context['post_list']), 1)
+        self.assertEqual(
+            response.context['post_list'][0].category.name, 'general'
+        )
