@@ -10,7 +10,7 @@ class PostUpdate(UpdateView):
     model = Post
     fields = ['title', 'category', 'excerpt', 'content']
     template_name = 'edit_post/edit_post.html'
-    success_url = f'/profile/'
+    success_url = '/profile/'
 
     def get_object(self, queryset=None):
         obj = super(PostUpdate, self).get_object(queryset)
@@ -19,6 +19,5 @@ class PostUpdate(UpdateView):
         return obj
 
     def form_valid(self, form):
-        print(form.data)
         messages.success(self.request, "The task was updated successfully.")
         return super(PostUpdate, self).form_valid(form)

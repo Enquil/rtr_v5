@@ -92,41 +92,41 @@ class EditPostViewTest(TestCase):
         # should return 403: forbidden
         self.assertEqual(response.status_code, 403)
 
-    # def test_post_edit_post(self):
-    #     # creates a mock category
-    #     category = Category.objects.create(
-    #         friendly_name='Ships and Giggles'
-    #     )
-    #     user = User.objects.get(id=1)
-    #     self.client.force_login(user)
+    def test_post_edit_post(self):
+        # creates a mock category
+        category = Category.objects.create(
+            friendly_name='Ships and Giggles'
+        )
+        user = User.objects.get(id=1)
+        self.client.force_login(user)
 
-    #     data = {
-    #          'title': 'new title 1234',
-    #          'author': user,
-    #          'excerpt': 'new excerpt',
-    #          'content': 'new content',
-    #          'category': 3,
-    #          'created_on': datetime.now(),
-    #          'status': 1,
-    #     }
-    #     self.client.force_login(user)
-    #     post = Post.objects.get(
-    #         id=1
-    #     )
+        data = {
+             'title': 'new title 1234',
+             'author': user,
+             'excerpt': 'new excerpt',
+             'content': 'new content',
+             'category': 3,
+             'created_on': datetime.now(),
+             'status': 1,
+        }
+        self.client.force_login(user)
+        post = Post.objects.get(
+            id=1
+        )
 
-    #     # sends a post request to /edit_post/post.slug/
-    #     response = self.client.post(
-    #         reverse('edit_post', kwargs={'slug': post.slug}), data
-    #     )
-    #     # Should return a 302 statuscode
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertRedirects(response, expected_url='/profile/')
-    #     # refreshes the post model from database
-    #     post.refresh_from_db()
-    #     self.assertEqual(post.excerpt, 'new excerpt')
-    #     self.assertEqual(post.title, 'new title 1234')
-    #     self.assertEqual(post.category.name, 'ships_giggles')
+        # sends a post request to /edit_post/post.slug/
+        response = self.client.post(
+            reverse('edit_post', kwargs={'slug': post.slug}), data
+        )
+        # Should return a 302 statuscode
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, expected_url='/profile/')
+        # refreshes the post model from database
+        post.refresh_from_db()
+        self.assertEqual(post.excerpt, 'new excerpt')
+        self.assertEqual(post.title, 'new title 1234')
+        self.assertEqual(post.category.name, 'ships_giggles')
 
-    #     # Just doublecheck to see that it's using the correct post
-    #     # For good measure
-    #     self.assertEqual(post.id, 1)
+        # Just doublecheck to see that it's using the correct post
+        # For good measure
+        self.assertEqual(post.id, 1)
