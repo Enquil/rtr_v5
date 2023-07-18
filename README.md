@@ -11,7 +11,7 @@ Data modeling - DBSchema
 
 ## Planning
 
-Decided for 3*1 week sprints, with some keywords for each sprint in mind  
+Decided for 3*1 week sprints, with some keywords in mind for each sprint  
 This plan was made for rtr_v3 originally, so the dates are not exactly matching for this final version.  
 Last day of each sprint, i took some time to re-assess next phase based on progress during the previous one, without any major changes.
 
@@ -24,10 +24,10 @@ Last day of each sprint, i took some time to re-assess next phase based on progr
     * Basic Admin setup with CRUD (It's built in to django)
     * Layout and structural front-end design
 
-In sprint 1, i focused mostly on very basic features for users, like:  
+In sprint 1, i focus mostly on very basic features for users specifically, like:  
     * Setting Up the home view in the form of a postlist-view with sort-functionality by category
 
-In general:  
+General implementations:  
     * Installing relevant libraries and applications (see requirements.txt for full list)  
     * Structural front-end/layout (No color or decorating)
     * Setting Up admin view to insert model instances for reference when developing the site
