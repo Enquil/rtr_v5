@@ -83,6 +83,7 @@ class TestPostView(TestCase):
 
     def test_liked_boolean(self):
         '''
+        Test if like view changes the liked boolean correctly
         '''
         user = User.objects.get(id=1)
         post = Post.objects.get(id=1)
