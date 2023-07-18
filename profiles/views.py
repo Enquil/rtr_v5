@@ -12,8 +12,14 @@ from .models import UserProfile
 def profile_view(request):
 
     profile = get_object_or_404(UserProfile, id=request.user.id)
-    posts = Post.objects.filter(author=profile.user.id)
-    comments = Comment.objects.filter(author=profile.user.id)
+
+    posts = Post.objects.filter(
+        author=profile.user.id
+    ).order_by('-created_on')
+
+    comments = Comment.objects.filter(
+        author=request.user.id
+    ).order_by('-created_on')
 
     return render(
         request,
