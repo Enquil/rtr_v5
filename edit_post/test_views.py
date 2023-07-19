@@ -38,7 +38,8 @@ class EditPostViewTest(TestCase):
             title='new',
             category=category,
             author=user,
-            content='test'
+            content='test',
+            slug='test'
         )
 
         post2 = Post.objects.create(
@@ -56,7 +57,6 @@ class EditPostViewTest(TestCase):
         post = Post.objects.get(id=1)
         user = User.objects.get(id=1)
         self.client.force_login(user)
-
         response = self.client.get(f'/edit_post/{post.slug}/')
         # Test if response.status_code is ok
         self.assertEqual(response.status_code, 200)
