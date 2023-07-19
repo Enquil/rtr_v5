@@ -12,14 +12,19 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
-                <table class="border">
-                    <tr class="text-center border-bottom">
+            <div class="col-12 col-md-6 col-lg-4">
+
+                <h3 class="ms-5">Posts</h3>
+
+                <table class="border-bottom border-top border-dark mx-0">
+                    <tr class="text-center border-bottom border-dark">
                         <th class="fs-5">Title</th>
                         <th class="fs-5">Category</th>
                         <th class="fs-5">Created</th>
                     </tr>
+                    <!-- iterates posts and adds user action buttons -->
                     {% for post in posts %}
+
                         <tr {% if forloop.counter|divisibleby:2 %} style="background-color: #bee0ff;" {% endif %}>
                             <td>
                                 <span class="fs-5 mx-2">
@@ -35,23 +40,33 @@
                             </td>
                             <td><span class="fs-5 mx-2">{{ post.created_on }}</span></td>
                         </tr>
+
                     {% endfor %}
                 </table>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
-                    {% for comment in comments %}
-                        <div class="border mt-2">
-                            <h3>@ {{ comment.post }} on <small>{{ comment.created_on }}</small></h3>
-                            <p>{{ comment.body }}</p>
-                            <div class="options-container">
-                                <button class="btn btn-dark border-0 rounded-0 mb-3" href="">EDIT</button>
-                                <button class="btn btn-danger border-0 rounded-0 mb-3" href="">DELETE</button>
-                            </div>
+            <div class="col-12 col-md-6 col-lg-4 text-center">
+
+                <h3>Comments</h3>
+
+                <!-- Iterates over users comments with edit/delete fucntionality -->
+                {% for comment in comments %}
+
+                    <div class="border-top border-dark mt-2 text-center">
+
+                        <h5>Your wrote @ {{ comment.post }} on <small>{{ comment.created_on }}</small></h5>
+                        <p>{{ comment.body }}</p>
+
+                        <!-- container with user action buttons -->
+                        <div class="options-container">
+
+                            <button class="btn btn-dark border-0 rounded-0 mb-3" href="">EDIT</button>
+                            <button class="btn btn-danger border-0 rounded-0 mb-3" href="">DELETE</button>
+
                         </div>
-                    {% endfor %}
+                    </div>
+
+                {% endfor %}
             </div>
         </div>
     </div>
