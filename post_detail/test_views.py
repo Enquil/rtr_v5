@@ -53,6 +53,9 @@ class TestPostView(TestCase):
         # Filters the post through slug
         post = Post.objects.filter(slug=post.slug).first()
         # Tests that number of likes is actually 0
+        self.assertEqual(post.number_of_likes(), 1)
+        # Unliking
+        self.client.post(reverse('post_like', args=[post.slug]))
         self.assertEqual(post.number_of_likes(), 0)
 
     def test_comment(self):
