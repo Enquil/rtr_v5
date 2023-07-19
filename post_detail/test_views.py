@@ -14,7 +14,8 @@ class TestPostView(TestCase):
         post = Post.objects.create(
             title="Test post", author=user,
             excerpt="Test excerpt",
-            content="Test content", status=1
+            content="Test content", status=1,
+            slug='meow',
         )
 
         post.save()
@@ -36,8 +37,8 @@ class TestPostView(TestCase):
         post = Post.objects.get(id=1)
 
         self.client.force_login(user)
-        self.client.post(reverse('post_like', args=[post.slug]))
         post = Post.objects.filter(slug=post.slug).first()
+        self.client.post(reverse('post_like', args=[post.slug]))
         self.assertEqual(post.number_of_likes(), 1)
 
     def test_unlike(self):
@@ -48,7 +49,6 @@ class TestPostView(TestCase):
         self.client.force_login(user)
 
         # Likes post like in test above, the unlikes by calling the view again
-        self.client.post(reverse('post_like', args=[post.slug]))
         self.client.post(reverse('post_like', args=[post.slug]))
         # Filters the post through slug
         post = Post.objects.filter(slug=post.slug).first()

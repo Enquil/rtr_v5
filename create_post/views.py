@@ -29,8 +29,7 @@ def create_post(request):
             post_form.instance.slug = slugify(
                 f'\
                 {request.POST["title"]}-\
-                {post_form.instance.author}-\
-                {random.randint(0, 10000)}'
+                {post_form.instance.author}{request.user.id}'
             )
 
         # Check if object with that slug already exists
