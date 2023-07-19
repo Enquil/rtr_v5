@@ -86,3 +86,41 @@ class CreatePostViewTest(TestCase):
         self.assertEqual(len(posts), 1)
         # Finally, let's see if that post matches the data we posted
         self.assertAlmostEqual(posts[0].title, 'new title 1234')
+
+    def test_title_user_already_exists(self):
+
+        user = User.objects.get(id=1)
+        self.client.force_login(user)
+
+        post = Post.objects.create(
+            title="test",
+            author=user,
+            excerpt="test",
+            content="test", status=1,
+            slug='test-alan1',
+        )
+        post.save()
+
+        post_data = {
+             'title': 'test',
+             'author': user,
+             'excerpt': 'test',
+             'content': 'test',
+             'category': 1,
+             'created_on': datetime.now(),
+             'status': 1,
+        }
+
+        # get the create_post view and assert there is a saved post.model
+        response = self.client.get('/create_post/')
+        self.assertEqual(len(Post.objects.all()), 1)
+
+        # post the data and make sure a message is stored in context
+        response = self.client.post(reverse('create_post'), data=post_data)
+        messages = list([response.context['messages']])
+        self.assertEqual(len(messages), 1)
+        # check that message is the one set in create_post.view
+        self.assertEqual(
+            [m.message for m in list(response.context['messages'])],
+            ['You already have a post named that, select another title']
+        )

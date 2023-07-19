@@ -55,7 +55,7 @@ def create_post(request):
             }
             messages.add_message(
                 request, messages.WARNING,
-                'Something went wrong, please try again'
+                'You already have a post named that, select another title'
             )
             return render(
                 request,
