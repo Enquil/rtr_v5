@@ -91,6 +91,7 @@ class PostModelTest(TestCase):
             author=user,
             content="so easy",
             category=category,
+            slug='test'
         )
 
         post2 = Post.objects.create(
@@ -98,6 +99,7 @@ class PostModelTest(TestCase):
             author=user2,
             content="sometimes, 1 is 0",
             category=category,
+            slug='test2'
         )
 
     def test_post_str_method(self):
@@ -124,8 +126,8 @@ class PostModelTest(TestCase):
         '''
         test_post = Post.objects.get(id=1)
         test_post2 = Post.objects.get(id=2)
-        self.assertEqual(test_post.slug, 'how-to-crack-codes-alan1')
-        self.assertEqual(test_post2.slug, 'calculating-machines-ada2')
+        self.assertEqual(test_post.slug, 'test')
+        self.assertEqual(test_post2.slug, 'test2')
 
     def test_published_by_default(self):
         '''
