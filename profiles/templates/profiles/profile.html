@@ -21,11 +21,19 @@
                     </tr>
                     {% for post in posts %}
                         <tr {% if forloop.counter|divisibleby:2 %} style="background-color: #bee0ff;" {% endif %}>
-                            <td><span class="fs-5 mx-2">{{ post.title }}</span></td>
-                            <td><span class="fs-5 mx-2">{{ post.category|title }}</span></td>
+                            <td>
+                                <span class="fs-5 mx-2">
+                                    {{ post.title }}
+                                </span>
+                                <button class="btn btn-dark border-0 rounded-0 mb-3 d-block ms-2" href="">EDIT</button>
+                            </td>
+                            <td>
+                                <span class="fs-5 mx-2">
+                                    {{ post.category|title }}
+                                </span>
+                                <button class="btn btn-danger border-0 rounded-0 mb-3 d-block" href="">DELETE</button>
+                            </td>
                             <td><span class="fs-5 mx-2">{{ post.created_on }}</span></td>
-                            <td><a class="btn btn-dark border-0 rounded-0" href="{% url 'edit_post' post.slug %}">EDIT</a></td>
-                            <td><a class="btn btn-danger border-0 rounded-0" href="{% url 'edit_post' post.slug %}">DELETE</a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -33,23 +41,17 @@
         </div>
 
         <div class="row">
-            <div class="col-12">
-                <table>
-                    <tr class="text-center border-bottom">
-                        <th><span class="fs-5">Post</span></th>
-                        <th><span class="fs-5">Content</span></th>
-                        <th><span class="fs-5">Created</span></th>
-                    </tr>
+            <div class="col-12 col-md-6 col-lg-4">
                     {% for comment in comments %}
-                        <tr {% if forloop.counter|divisibleby:2 %} style="background-color: #bee0ff;" {% endif %}>
-                            <td class="text-center"><span class="fs-5 mx-1">{{ comment.post }}</span></td>
-                            <td class="text-center"><span class="fs-5 mx-1">{{ comment.body }}</span></td>
-                            <td class="text-center"><span class="fs-5 mx-1">{{ comment.created_on }}</span></td>
-                            <td class="text-center"><a class="btn btn-dark border-0 rounded-0" href="">EDIT</a></td>
-                            <td class="text-center"><a class="btn btn-danger border-0 rounded-0" href="">DELETE</a></td>
-                        </tr>
+                        <div class="border mt-2">
+                            <h3>@ {{ comment.post }} on <small>{{ comment.created_on }}</small></h3>
+                            <p>{{ comment.body }}</p>
+                            <div class="options-container">
+                                <button class="btn btn-dark border-0 rounded-0 mb-3" href="">EDIT</button>
+                                <button class="btn btn-danger border-0 rounded-0 mb-3" href="">DELETE</button>
+                            </div>
+                        </div>
                     {% endfor %}
-                </table>
             </div>
         </div>
     </div>
