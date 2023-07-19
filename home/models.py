@@ -49,10 +49,9 @@ class Post(models.Model):
     - "status" is 1: "Published", as default
     '''
 
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
     slug = models.SlugField(
         max_length=200,
-        unique=True,
         null=True,
         blank=True
     )
@@ -82,19 +81,6 @@ class Post(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
-
-    # saves and slugifies the post after user submits the form,
-    # Use random int and username to allow duplicate titles instead
-    def save(self, *args, **kwargs):
-
-        if not self.slug:
-            self.slug = (
-                slugify(
-                    self.title +
-                    '-' + str(self.author.username) + str(self.author.id))
-            )
-
-        return super().save(*args, **kwargs)
 
 
 class Comment(models.Model):
