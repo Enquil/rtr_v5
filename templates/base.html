@@ -72,13 +72,25 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
               <ul class="navbar-nav ms-auto me-5">
-                <!-- home "button" -->
+
+                <!-- home button -->
                 <li class="nav-item">
                   <a class="nav-link ms-2 me-2 text-dark fs-4" 
                      href="{% url 'index' %}">
                     <i class="fa-solid fa-house"></i>
+                    Home
                   </a>
                 </li>
+
+                <!-- create_post link -->
+                <li class="nav-item">
+                  <a class="nav-link ms-2 me-2 text-dark fs-4" 
+                     href="{% url 'create_post' %}">
+                    <i class="fa-sharp fa-solid fa-pen-nib"></i>
+                    Create Post
+                  </a>
+                </li>
+
                 <!-- Category dropdown menu -->
                 <li class="nav-item dropdown">
 
@@ -88,13 +100,14 @@
                      aria-haspopup="true" aria-expanded="false">
                     Categories
                   </a>
-
+                  
                   <div class="dropdown-menu p-0 border-0 m-0 bg-purple"
                        aria-labelledby="categories-dropdown">
                     <!--
                       For loop iterates all categories in database, 
                       hidden input uses corresponding id to filter the queryset
                     -->
+                    
                     {% for category in categories %}
                       <a class="dropdown-item bg-purple text-dark" 
                          href="{% url 'index' %}?category={{ category.id }}">
@@ -104,11 +117,6 @@
                   </div>
                 </li>
 
-                <li class="nav-item active">
-                  <a class="nav-link ms-2 text-dark fs-4 me-2" href="#">
-                    
-                  </a>
-                </li>
                 <div class="vr"></div>
 
                 <!-- if statement handles what user sees on the navbar depending if authenticated or not -->
@@ -123,10 +131,6 @@
                       {{ user.username }}
                     </a>
                     <div class="dropdown-menu p-0 border-0 m-0 bg-purple" aria-labelledby="userDropDown">
-                      <a class="dropdown-item bg-purple text-dark fs-5" href="{% url 'profile' %}">
-                        <i class="fa-sharp fa-solid fa-pen-nib"></i>
-                        Create Post
-                      </a>
                       <a class="dropdown-item bg-purple text-dark fs-5" href="{% url 'profile' %}">
                         Profile
                       </a>
