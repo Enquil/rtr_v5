@@ -16,7 +16,9 @@ def delete_post(request, id):
 
         # if user is post-owner, delete it
         if post.author.id == request.user.id:
+
             post.delete()
+
             # return message to confirm deletion
             messages.add_message(
                 request, messages.SUCCESS,
