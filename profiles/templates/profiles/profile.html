@@ -30,21 +30,57 @@
                                 <span class="fs-5 mx-2">
                                     {{ post.title }}
                                 </span>
-                                <button class="btn btn-dark border-0 rounded-0 mb-3 d-block ms-2" href="">EDIT</button>
+                                <a class="btn btn-dark border-0 mb-3 d-block ms-2" href="{% url 'edit_post' post.slug %}">
+                                    Edit
+                                </a>
                             </td>
                             <td>
                                 <span class="fs-5 mx-2">
                                     {{ post.category|title }}
                                 </span>
-                                <button class="btn btn-danger border-0 rounded-0 mb-3 d-block" href="{% url 'delete_post' post.id %}">DELETE</button>
+                                <button type="button" 
+                                        class="btn btn-danger border-0 d-block mb-3 ms-1" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#post-delete-modal-{{ post.id }}">
+                                    Delete
+                                </button>
                             </td>
                             <td><span class="fs-5 mx-2">{{ post.created_on }}</span></td>
                         </tr>
 
+                        <!-- Modal div for confirming deletion of post models 
+                             sourced from: https://getbootstrap.com/docs/4.0/components/modal/
+                        -->
+                        <div id="post-delete-modal-{{ post.id }}" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title">Confirm Deletion</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>{{ post.title }}</h5>
+                                  <p>Are you sure you want to delete this post?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <form class="inline-block" action="{% url 'delete_post' post.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                    </form>
+                                  <button type="button" 
+                                          class="btn btn-secondary" 
+                                          data-bs-dismiss="modal" 
+                                          data-bs-target="#post-delete-modal-{{ post.id }}">
+                                    Nevermind
+                                </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     {% endfor %}
                 </table>
             </div>
 
+            <!-- user comments div starts here -->
             <div class="col-12 col-md-6 col-lg-4 text-center">
 
                 <h3>Comments</h3>
@@ -54,15 +90,40 @@
 
                     <div class="border-top border-dark mt-2 text-center">
 
+                        <!-- Comment Info -->
                         <h5>Your wrote @ {{ comment.post }} on <small>{{ comment.created_on }}</small></h5>
                         <p>{{ comment.body }}</p>
 
                         <!-- container with user action buttons -->
                         <div class="options-container">
 
-                            <button class="btn btn-dark border-0 rounded-0 mb-3" href="">EDIT</button>
-                            <button class="btn btn-danger border-0 rounded-0 mb-3" href="">DELETE</button>
+                            <button class="btn btn-dark border-0 mb-3" href="">EDIT</button>
+                            <button type="button" 
+                                    class="btn btn-danger border-0 mb-3 ms-1" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#comment-delete-modal-{{ comment.id }}">
+                                DELETE
+                            </button>
+                        </div>
+                    </div>
 
+                        <!-- Modal div for confirming deletion of comment models 
+                             sourced from: https://getbootstrap.com/docs/4.0/components/modal/
+                        -->
+                    <div id="comment-delete-modal-{{ comment.id }}" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm Deletion</h5>
+                            </div>
+                            <div class="modal-body">
+                                <p>{{ comment.body }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Confirm</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#comment-delete-modal-{{ comment.id }}">Nevermind</button>
+                            </div>
+                            </div>
                         </div>
                     </div>
 

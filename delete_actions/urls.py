@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path(
-        'delete/<int:id>/',
+        'delete_post/<int:id>/',
         views.delete_post,
         name='delete_post'
     ),
