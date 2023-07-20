@@ -88,18 +88,25 @@ Find results below ->
 
 #### Django Nose overall report
 
-![Data Models](./images/django_nose_overall.png)
+![Nose Overall](./images/django_nose_overall.png)  
+Main project report:
+
+![Nose Main Project Test](./images/main_project_test.png)
 
 #### Django Nose detailed report
 
 However, running coverage in tandem with django nose produces the following 'detailed' overall result:  
   
-![Data Models](./images/django_nose_coverage_error.png)
+![coverage/nose error](./images/django_nose_coverage_error.png)
 
 Did some research about this, and it turns out that coverage and django nose always have been incompatible, there are some ways to 'solve' this, but they are all described as very hacky.
 
 #### Coverage Reports
 
+When you compare the 2, Nose and Coverage does not quite agree on what should be tested:
+
+![Coverage test p1](./images/coverage_test_p1.png)
+![Coverage test p2](./images/coverage_test_p2.png)
 
 ## Known Issues
 
