@@ -29,7 +29,7 @@
                             <!-- container with user action buttons -->
                             <div class="options-container">
 
-                                <button class="btn btn-dark border-0 mb-3" href="">EDIT</button>
+                                <a class="btn btn-dark border-0 mb-3" href="{% url 'edit_post' post.slug %}">EDIT</a>
                                 <button type="button" 
                                         class="btn btn-danger border-0 mb-3 ms-1" 
                                         data-bs-toggle="modal" 
@@ -89,8 +89,6 @@
 
                         <!-- container with user action buttons -->
                         <div class="options-container">
-
-                            <button class="btn btn-dark border-0 mb-3" href="">EDIT</button>
                             <button type="button" 
                                     class="btn btn-danger border-0 mb-3 ms-1" 
                                     data-bs-toggle="modal" 

@@ -32,6 +32,6 @@ class PostUpdate(UpdateView):
     def form_valid(self, form):
         messages.success(
             self.request,
-            "The task was updated successfully."
+            "The post was successfully updated!"
         )
         return super(PostUpdate, self).form_valid(form)
