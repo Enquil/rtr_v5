@@ -71,6 +71,35 @@ Standard Django User Model @ https://docs.djangoproject.com/en/4.2/ref/contrib/a
 
 ## Design
 
+## Testing
+
+### Unit testing
+
+I used 2 different unit test libraries/modules:
+
+* Coverage
+* Django Nose
+
+This was because coverage says it wants me to test the test.py files as well,  
+I realize i might make a mistake here because i didnt test them,  
+but all topics i can find about it says that is not something you should/need to do.  
+Also, i wouldnt have a clue where to begin.  
+Find results below ->
+
+#### Django Nose overall results
+
+![Data Models](./images/django_nose_overall.png)
+
+#### Django Nose detailed results
+
+However, running coverage in tandem with django nose produces the following 'detailed' overall result:  
+  
+![Data Models](./images/coverage_with_django_nose.png)
+
+Did some research about this, and it turns out that coverage and django nose always have been incompatible, there are some ways to 'solve' this, but they are all described as very hacky.
+
+#### 
+
 ## Known Issues
 
 ## Future Implementation
