@@ -12,70 +12,63 @@
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-5 col-lg-4 text-center 
+                        border-dark offset-md-1 offset-lg-2">
 
-                <h3 class="ms-5">Posts</h3>
+                <h3>Posts</h3>
 
-                <table class="border-bottom border-top border-dark mx-0">
-                    <tr class="text-center border-bottom border-dark">
-                        <th class="fs-5">Title</th>
-                        <th class="fs-5">Category</th>
-                        <th class="fs-5">Created</th>
-                    </tr>
                     <!-- iterates posts and adds user action buttons -->
                     {% for post in posts %}
 
-                        <tr {% if forloop.counter|divisibleby:2 %} style="background-color: #bee0ff;" {% endif %}>
-                            <td>
-                                <span class="fs-5 mx-2">
-                                    {{ post.title }}
-                                </span>
-                                <a class="btn btn-dark border-0 mb-3 d-block ms-2" href="{% url 'edit_post' post.slug %}">
-                                    Edit
-                                </a>
-                            </td>
-                            <td>
-                                <span class="fs-5 mx-2">
-                                    {{ post.category|title }}
-                                </span>
+                        <div class="border-top border-dark mt-2 text-center">
+
+                            <!-- post info -->
+                            <h5>{{ post.title }}</h5>
+                            <p>{{ post.excerpt }}</p>
+
+                            <!-- container with user action buttons -->
+                            <div class="options-container">
+
+                                <button class="btn btn-dark border-0 mb-3" href="">EDIT</button>
                                 <button type="button" 
-                                        class="btn btn-danger border-0 d-block mb-3 ms-1" 
+                                        class="btn btn-danger border-0 mb-3 ms-1" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#post-delete-modal-{{ post.id }}">
-                                    Delete
+                                    DELETE
                                 </button>
-                            </td>
-                            <td><span class="fs-5 mx-2">{{ post.created_on }}</span></td>
-                        </tr>
+                            </div>
+                        </div>
 
-                        <!-- Modal div for confirming deletion of post models 
-                             sourced from: https://getbootstrap.com/docs/4.0/components/modal/
-                        -->
+                            <!-- Modal div for confirming deletion of post models 
+                                sourced from: https://getbootstrap.com/docs/4.0/components/modal/
+                            -->
                         <div id="post-delete-modal-{{ post.id }}" class="modal" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
-                              <div class="modal-content">
+                                <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title">Confirm Deletion</h5>
+                                    <h5 class="modal-title">Confirm Deletion</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>{{ post.title }}</h5>
-                                  <p>Are you sure you want to delete this post?</p>
+                                    <p>{{ post.body }}</p>
                                 </div>
-                                <div class="modal-footer">
-                                    <form class="inline-block" action="{% url 'delete_post' post.id %}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary">Confirm</button>
-                                    </form>
-                                  <button type="button" 
-                                          class="btn btn-secondary" 
-                                          data-bs-dismiss="modal" 
-                                          data-bs-target="#post-delete-modal-{{ post.id }}">
-                                    Nevermind
-                                </button>
+
+                                    <div class="modal-footer">
+
+                                        <form class="inline-block" action="{% url 'delete_post' post.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary" 
+                                                data-bs-dismiss="modal" 
+                                                data-bs-target="#post-delete-modal-{{ post.id }}">
+                                            Nevermind
+                                        </button>
+
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
+                        </div>
+
                     {% endfor %}
                 </table>
             </div>
@@ -119,10 +112,20 @@
                             <div class="modal-body">
                                 <p>{{ comment.body }}</p>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Confirm</button>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-target="#comment-delete-modal-{{ comment.id }}">Nevermind</button>
-                            </div>
+
+                                <div class="modal-footer">
+
+                                    <form class="inline-block" action="{% url 'delete_comment' comment.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                    </form>
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-bs-dismiss="modal" 
+                                            data-bs-target="#comment-delete-modal-{{ comment.id }}">
+                                        Nevermind
+                                    </button>
+
+                                </div>
                             </div>
                         </div>
                     </div>
