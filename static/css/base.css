@@ -16,7 +16,7 @@ input:focus {
 
 .vr {
     width: 1px;
-    background-color: white!important;
+    background-color: black!important;
 }
 
 
@@ -85,11 +85,11 @@ input:focus {
 }
 
 .purple {
-    color: #3E283E;
+    color: #c9bfc0;
 }
 
 .bg-purple {
-    background-color: #3E283E;
+    background-color: #c9bfc0;
 }
 
 .cinnabar {

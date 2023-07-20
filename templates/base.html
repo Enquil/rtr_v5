@@ -58,9 +58,9 @@
 
             <!-- Brand -->
             <a class="navbar-brand ms-3" href="{% url 'index' %}">
-                <span class="fs-3 text-white">R</span>
-                <h2 class="d-inline text-white">T</h2>
-                <span class="fs-3 text-white me-5">R</span>
+                <span class="fs-3 text-dark">R</span>
+                <h2 class="d-inline text-dark">T</h2>
+                <span class="fs-3 text-dark me-5">R</span>
             </a>
 
             <!-- Navbar toggler for smaller screens -->
@@ -74,15 +74,15 @@
               <ul class="navbar-nav ms-auto me-5">
                 <!-- home "button" -->
                 <li class="nav-item">
-                  <a class="nav-link ms-2 me-2 text-white fs-4" 
+                  <a class="nav-link ms-2 me-2 text-dark fs-4" 
                      href="{% url 'index' %}">
-                    <i class="fa-solid fa-house" style="color: #ffffff;"></i>
+                    <i class="fa-solid fa-house"></i>
                   </a>
                 </li>
                 <!-- Category dropdown menu -->
                 <li class="nav-item dropdown">
 
-                  <a class="nav-link dropdown-toggle ms-2 me-2 text-white fs-4" 
+                  <a class="nav-link dropdown-toggle ms-2 me-2 text-dark fs-4" 
                      href="#"
                      id="categories-dropdown" data-bs-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
@@ -96,7 +96,7 @@
                       hidden input uses corresponding id to filter the queryset
                     -->
                     {% for category in categories %}
-                      <a class="dropdown-item bg-purple text-white" 
+                      <a class="dropdown-item bg-purple text-dark" 
                          href="{% url 'index' %}?category={{ category.id }}">
                          {{ category.get_friendly_name }}
                       </a>
@@ -105,7 +105,7 @@
                 </li>
 
                 <li class="nav-item active">
-                  <a class="nav-link ms-2 text-white fs-4 me-2" href="#">
+                  <a class="nav-link ms-2 text-dark fs-4 me-2" href="#">
                     
                   </a>
                 </li>
@@ -114,30 +114,26 @@
                 <!-- if statement handles what user sees on the navbar depending if authenticated or not -->
                 {% if user.is_authenticated %}
 
-                  <li class="nav-item">
-                    <a class="nav-link ms-2 me-2 text-white fs-4" 
-                       href="{% url 'create_post' %}">
-                      <i class="fa-sharp fa-solid fa-pen-nib" style="color: #ffffff;"></i>
-                      Create Post
-                    </a>
-                  </li>
-
                   <!-- user actions dropdown menu -->
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle ms-2 text-white fs-4" href="#"
+                    <a class="nav-link dropdown-toggle ms-2 text-dark fs-4" href="#"
                        id="userDropDown" data-bs-toggle="dropdown" 
                        aria-haspopup="true" aria-expanded="false">
-                      <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                      <i class="fa-solid fa-user"></i>
                       {{ user.username }}
                     </a>
                     <div class="dropdown-menu p-0 border-0 m-0 bg-purple" aria-labelledby="userDropDown">
-                      <a class="dropdown-item bg-purple text-white fs-5" href="{% url 'profile' %}">
+                      <a class="dropdown-item bg-purple text-dark fs-5" href="{% url 'profile' %}">
+                        <i class="fa-sharp fa-solid fa-pen-nib"></i>
+                        Create Post
+                      </a>
+                      <a class="dropdown-item bg-purple text-dark fs-5" href="{% url 'profile' %}">
                         Profile
                       </a>
-                      <a class="dropdown-item bg-purple text-white fs-5" href="">
+                      <a class="dropdown-item bg-purple text-dark fs-5" href="">
                         User Settings
                       </a>
-                      <a class="dropdown-item bg-purple text-white fs-5" href="{% url 'account_logout' %}">
+                      <a class="dropdown-item bg-purple text-dark fs-5" href="{% url 'account_logout' %}">
                         Log Out
                       </a>
                     </div>
@@ -147,13 +143,13 @@
                 {% else %}
 
                   <li class="nav-item ml-auto">
-                    <a class="nav-link fs-4 ms-2 text-white" 
+                    <a class="nav-link fs-4 ms-2 text-dark" 
                        href="{% url 'account_login' %}">
                        Log In
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-4 ms-2 text-white btn-success" 
+                    <a class="nav-link fs-4 ms-2 text-dark btn-success" 
                        href="{% url 'account_signup' %}">
                       Sign Up
                     </a>
