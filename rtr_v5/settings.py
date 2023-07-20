@@ -33,7 +33,10 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-enquil-rtrv5-nkpabkp6dae.ws-eu101.gitpod.io']
+ALLOWED_HOSTS = [
+    '8000-enquil-rtrv5-nkpabkp6dae.ws-eu102.gitpod.io',
+    '8000-enquil-rtrv5-nkpabkp6dae.ws-eu101.gitpod.io'
+]
 
 
 # Application definition
@@ -62,6 +65,7 @@ INSTALLED_APPS = [
     'create_post',
     'profiles',
     'edit_post',
+    'delete_actions',
 
     # testing
     'django_nose',
