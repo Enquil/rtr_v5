@@ -31,33 +31,43 @@ General implementations:
     * Installing relevant libraries and applications (see requirements.txt for full list)  
     * Structural front-end/layout (No color or decorating)
     * Setting Up admin view to insert model instances for reference when developing the site
+    * Tests
 
 #### Sprint 2, 19/6-26/6
     * Model Setup, UserProfile
     * CREATE functionality for users, (posts and comments)
     * Picking a color-scheme
     * Extended admin control (manipulating querysets from the admin-panel in various ways)
+    * Tests
 
 #### Sprint 3, 26/6-3/7
     * Delete Functionality for users
-    * 
+    * Style templates
+    * Tests
 
+### Omitted functionality
+Due to time-constraints, i chose to omit the following functionality that was originally planned:
+  
+* Comment reply system
+* News-api, have not recieved a reply about extra requests still
+* 
 
 ## Models
 
-### Model schema
+### Model used and Schema
 
 https://dbdiagram.io/d/649b270a02bd1c4a5e274ea3
-![Data Models](./images/datamodels.png)
+![Data Models](./images/model_schema.png)
+
+### User
+
+Standard Django User Model @ https://docs.djangoproject.com/en/4.2/ref/contrib/auth/
 
 ### Post
-
-
 
 ### Comment
 
 ### UserProfile
-
 
 ## Design
 
