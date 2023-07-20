@@ -7,4 +7,9 @@ urlpatterns = [
         views.delete_post,
         name='delete_post'
     ),
+    path(
+        'delete_comment/<int:id>/',
+        views.delete_comment,
+        name='delete_comment'
+    ),
 ]
