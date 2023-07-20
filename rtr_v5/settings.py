@@ -219,6 +219,6 @@ NOSE_ARGS = [
     '--with-coverage',
     (
      '--cover-package='
-     'create_post,edit_post,home,post_detail,profiles,delete_actions'
+     'rtr_v5,create_post,edit_post,home,post_detail,profiles,delete_actions'
     ),
 ]

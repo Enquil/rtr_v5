@@ -86,19 +86,20 @@ but all topics i can find about it says that is not something you should/need to
 Also, i wouldnt have a clue where to begin.  
 Find results below ->
 
-#### Django Nose overall results
+#### Django Nose overall report
 
 ![Data Models](./images/django_nose_overall.png)
 
-#### Django Nose detailed results
+#### Django Nose detailed report
 
 However, running coverage in tandem with django nose produces the following 'detailed' overall result:  
   
-![Data Models](./images/coverage_with_django_nose.png)
+![Data Models](./images/django_nose_coverage_error.png)
 
 Did some research about this, and it turns out that coverage and django nose always have been incompatible, there are some ways to 'solve' this, but they are all described as very hacky.
 
-#### 
+#### Coverage Reports
+
 
 ## Known Issues
 
