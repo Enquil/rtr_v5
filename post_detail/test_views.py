@@ -10,6 +10,7 @@ class TestPostView(TestCase):
     Sourced from CI pp-4 masterclass
     '''
     def setUp(self):
+
         user = User.objects.create(username="test", password="test")
         post = Post.objects.create(
             title="Test post", author=user,

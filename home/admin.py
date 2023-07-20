@@ -17,7 +17,6 @@ class PostAdmin(admin.ModelAdmin):
     )
 
     search_fields = ('title', 'content')
-    summernote_fields = ('content')
     actions = [
         'disable_selected_posts',
         'publish_selected_posts'
