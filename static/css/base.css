@@ -23,7 +23,7 @@ input:focus {
 /* Navbar styling */
 
 .dropdown-item:hover {
-    background-color: #6F53CA;
+    background-color: #3F5E5A;
 }
 
 
@@ -57,8 +57,8 @@ input:focus {
     font-size: 28px;
 }
 
-/* Colors, Shadow */
 
+/* Colors, Shadows */
 
 .box-shadow-large {
     box-shadow: 5px 5px 10px rgb(150, 150, 150);
@@ -66,14 +66,6 @@ input:focus {
 
 .box-shadow-smol {
     box-shadow: 2px 2px 5px rgb(150, 150, 150);
-}
-
-.slate {
-    color: #6F53CA;
-}
-
-.bg-slate {
-    background-color: #6F53CA;
 }
 
 .feldgrau {
@@ -92,18 +84,18 @@ input:focus {
     background-color: #E4EBF1;
 }
 
+.alice-dark {
+    color: #bde0ff;
+}
+
+.bg-alice-dark {
+    background-color: #bde0ff;
+}
+
 .ghost {
     color: #c9bfc0;
 }
 
 .bg-ghost {
     background-color: #c9bfc0;
-}
-
-.cinnabar {
-    color: #E55934;
-}
-
-.bg-cinnabar {
-    background-color: #E55934;
 }
