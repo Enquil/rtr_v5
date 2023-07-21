@@ -37,8 +37,8 @@ class PostForm(forms.ModelForm):
 
             'excerpt': forms.Textarea(
                 attrs={
-                    'cols': 55, 'rows': 6,
-                    'class': 'mb-2',
+                    'cols': 120, 'rows': 6,
+                    'class': 'mb-2 d-block m-0 w-100',
                 }),
 
             'category': forms.Select(
