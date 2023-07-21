@@ -11,7 +11,7 @@
                     {% if page_obj.has_previous %}
                     <li>
                         <a href="?page={{ page_obj.previous_page_number }}{% if category != None %}&category={{ category }}{% endif %}" 
-                           class="page-link text-dark me-4">
+                           class="page-link text-dark me-4 box-shadow-smol">
                             &laquo; PREV PAGE
                         </a>
                     </li>
@@ -19,7 +19,7 @@
                     {% if page_obj.has_next %}
                         <li>
                             <a href="?page={{ page_obj.next_page_number }}{% if category != None %}&category={{ category }}{% endif %}" 
-                               class="page-link text-dark ms-4"> 
+                               class="page-link text-dark ms-4 box-shadow-smol"> 
                                 NEXT PAGE &raquo;
                             </a>
                         </li>
@@ -32,7 +32,7 @@
 
                 <!-- List of posts  -->
                 {% for post in post_list %}
-                    <div class="card card-border {% if is_paginated and forloop.first %} 
+                    <div class="card box-shadow-large card-border {% if is_paginated and forloop.first %} 
                                                     mt-2 
                                                  {% else %} 
                                                     mt-5 
@@ -72,7 +72,7 @@
                             {% if page_obj.has_previous %}
                             <li>
                                 <a href="?page={{ page_obj.previous_page_number }}{% if category != None %}&category={{ category }}{% endif %}" 
-                                   class="page-link text-dark me-4">
+                                   class="page-link text-dark me-4 box-shadow-smol">
                                     &laquo; PREV PAGE
                                 </a>
                             </li>
@@ -80,7 +80,7 @@
                             {% if page_obj.has_next %}
                                 <li>
                                     <a href="?page={{ page_obj.next_page_number }}{% if category != None %}&category={{ category }}{% endif %}" 
-                                       class="page-link text-dark ms-4"> 
+                                       class="page-link text-dark ms-4 box-shadow-smol"> 
                                         NEXT PAGE &raquo;
                                     </a>
                                 </li>

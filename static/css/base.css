@@ -39,7 +39,6 @@ input:focus {
     height: auto;
 }
 
-
 /* Allauth templates and Form styling */
 
 #login-header {
@@ -58,7 +57,16 @@ input:focus {
     font-size: 28px;
 }
 
-/* Colors */
+/* Colors, Shadow */
+
+
+.box-shadow-large {
+    box-shadow: 5px 5px 10px rgb(150, 150, 150);
+}
+
+.box-shadow-smol {
+    box-shadow: 2px 2px 5px rgb(150, 150, 150);
+}
 
 .slate {
     color: #6F53CA;
