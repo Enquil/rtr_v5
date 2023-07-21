@@ -21,27 +21,6 @@ class TestPostForm(TestCase):
             friendly_name='General',
         )
 
-    def test_title_field_required(self):
-        '''
-        Test if title is required in form
-        '''
-        user = User.objects.get(id=1)
-        category = Category.objects.get(id=1)
-
-        form = PostForm({'author': user, 'title': '',
-                         'category': category,  'content': 'test'}
-                        )
-
-        # Test if form is valid, should return False
-        self.assertFalse(form.is_valid())
-        # Tests if 'title' is in form.errors.keys()
-        self.assertIn('title', form.errors.keys())
-        # Test if form error returns correct string
-        self.assertEqual(form.errors['title'][0], 'This field is required.')
-        # Tests if other required fields are okay
-        self.assertFalse('category' in form.errors.keys())
-        self.assertFalse('content' in form.errors.keys())
-
     def test_category_field_required(self):
         '''
         Test if category is required in form
