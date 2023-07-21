@@ -104,6 +104,7 @@ When you compare the 2, Nose and Coverage does not quite agree on what should be
 #### Testing as a user
 
 I started from the homepage and went from there, i took a screenshot on each page to document the navigation process etc.  
+On each page, i also refreshed with shift + f5 to make sure there was no issues with cache for example.
 
 Homepage when not logged in:
 
