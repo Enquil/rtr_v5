@@ -3,7 +3,7 @@
 ## Table of Contents
 
 ## Description
-
+Welcome to rtr_v5, This is a reddit-style newspage where users are supposed to be able to share whatever thoughts ideas or news they want
 
 ## Technologies Used
 
@@ -17,7 +17,10 @@ Last day of each sprint, i took some time to re-assess next phase based on progr
 
 ### Sprint Planning
 
+See [Kanban Board](https://github.com/users/Enquil/projects/6/views/1 "Kanban Board") for a more detailed view of issues/tasks, it's set to public
+
 #### Sprint 1, 12/6-19/6
+
     * Model setup, Category, Post and Comment
     * Log In/Sign Up functionality
     * Basic READ functionality for users and visitors (posts)
@@ -27,13 +30,15 @@ Last day of each sprint, i took some time to re-assess next phase based on progr
 In sprint 1, i focus mostly on very basic features for users specifically, like:  
     * Setting Up the home view in the form of a postlist-view with sort-functionality by category
 
-General implementations:  
-    * Installing relevant libraries and applications (see requirements.txt for full list)  
-    * Structural front-end/layout (No color or decorating)
-    * Setting Up admin view to insert model instances for reference when developing the site
-    * Tests
+General implementations:
+
+* Installing relevant libraries and applications (see requirements.txt for full list)
+* Structural front-end/layout (No color or decorating)
+* Setting Up admin view to insert model instances for reference when developing the site
+* Tests
 
 #### Sprint 2, 19/6-26/6
+
     * Model Setup, UserProfile
     * CREATE functionality for users, (posts and comments)
     * Picking a color-scheme
@@ -41,15 +46,18 @@ General implementations:
     * Tests
 
 #### Sprint 3, 26/6-3/7
-    * Delete Functionality for users
+
+    * Update and Delete Functionality for users
     * Style templates
     * Tests
 
 ### Omitted functionality
+
 Due to time-constraints, i chose to omit the following functionality that was originally planned:
   
 * Comment reply system
 * News-api, have not recieved a reply about extra requests still
+* Removed cloudinary image fields for posts, this is due to switching to function views and i did not have time to learn the differences in how forms are handled
 
 ## Models
 
