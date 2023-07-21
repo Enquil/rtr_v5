@@ -104,10 +104,20 @@ When you compare the 2, Nose and Coverage does not quite agree on what should be
 #### Testing as a user
 
 I started from the homepage and went from there, i took a screenshot on each page to document the navigation process etc.  
-On each page, i also refreshed with shift + f5 to make sure there was no issues with cache for example.
+On each page, i also refreshed with shift + f5 to make sure there was no issues with cache for example.  
+
+Inital Setup:  
+
+Set Up categories  
+![Manual test categories](./images/manual_view_testing/categories_manual_testing.png)  
+
+Set up 2 users, admin is superuser  
+![Manual test users](./images/manual_view_testing/users_manual_testing.png)
+
+Set up a couple of posts in different categories  
+![Manual test posts](./images/manual_view_testing/posts_manual_testing.png)
 
 Homepage when not logged in:
-
 
 ## Known Issues
 
