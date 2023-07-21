@@ -162,7 +162,13 @@ Redirects as it should, let's try logging in with a user that has not created th
 And we get a 403 response, as expected  
 ![edit post redirect anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_wrong_user.png)
 
-Now, let's make a user:
+Now, lets make a user:
+![sign up test](./images/manual_view_testing/signup_tests/test_signup.png)
+
+And we get a good response, user is created, also notice you now have an option to create posts in the navbar
+![sign up success](./images/manual_view_testing/signup_tests/test_signup_success.png)
+
+
 
 ## Known Issues
 
