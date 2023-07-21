@@ -50,7 +50,6 @@ Due to time-constraints, i chose to omit the following functionality that was or
   
 * Comment reply system
 * News-api, have not recieved a reply about extra requests still
-* 
 
 ## Models
 
@@ -59,15 +58,9 @@ Due to time-constraints, i chose to omit the following functionality that was or
 https://dbdiagram.io/d/649b270a02bd1c4a5e274ea3
 ![Data Models](./images/model_schema.png)
 
-### User
-
 Standard Django User Model @ https://docs.djangoproject.com/en/4.2/ref/contrib/auth/
 
-### Post
-
-### Comment
-
-### UserProfile
+I consider all models to be sourced somewhat from CodeInstitute
 
 ## Design
 
@@ -88,16 +81,16 @@ Find results below ->
 
 #### Django Nose overall report
 
-![Nose Overall](./images/django_nose_overall.png)  
+![Nose Overall](./images/unittest/django_nose_overall.png)  
 Main project report:
 
-![Nose Main Project Test](./images/main_project_test.png)
+![Nose Main Project Test](./images/unittest/main_project_test.png)
 
 #### Django Nose detailed report
 
 However, running coverage in tandem with django nose produces the following 'detailed' overall result:  
   
-![coverage/nose error](./images/django_nose_coverage_error.png)
+![coverage/nose error](./images/unittest/django_nose_coverage_error.png)
 
 Did some research about this, and it turns out that coverage and django nose always have been incompatible, there are some ways to 'solve' this, but they are all described as very hacky.
 
@@ -105,8 +98,15 @@ Did some research about this, and it turns out that coverage and django nose alw
 
 When you compare the 2, Nose and Coverage does not quite agree on what should be tested:
 
-![Coverage test p1](./images/coverage_test_p1.png)
-![Coverage test p2](./images/coverage_test_p2.png)
+![Coverage test p1](./images/unittest/coverage_test_p1.png)
+![Coverage test p2](./images/unittest/coverage_test_p2.png)
+
+#### Testing as a user
+
+I started from the homepage and went from there, i took a screenshot on each page to document the navigation process etc.  
+
+Homepage when not logged in:
+
 
 ## Known Issues
 
