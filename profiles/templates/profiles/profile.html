@@ -12,15 +12,21 @@
         </div>
 
         <div class="row">
+            <div class="col-12 text-center"><h3>Select your posts or comments</h3></div>
             <div class="col-12 col-md-5 col-lg-4 text-center 
                         border-dark offset-md-1 offset-lg-2">
-
-                <h3>Posts</h3>
+                <div type="button"
+                     data-bs-toggle="collapse" 
+                     data-bs-target="#profile-post-list"
+                     class="bg-alice-dark box-shadow-smol">
+                    <h3>Posts</h3>
+                </div>
 
                     <!-- iterates posts and adds user action buttons -->
                     {% for post in posts %}
 
-                        <div class="border-top border-dark mt-2 text-center">
+                        <div id="profile-post-list" 
+                             class="collapse border-top border-dark mt-2 text-center">
 
                             <!-- post info -->
                             <h5>{{ post.title }}</h5>
@@ -76,12 +82,18 @@
             <!-- user comments div starts here -->
             <div class="col-12 col-md-6 col-lg-4 text-center">
 
-                <h3>Comments</h3>
+                <div type="button"
+                     data-bs-toggle="collapse" 
+                     data-bs-target="#profile-comment-list"
+                     class="bg-alice-dark box-shadow-smol">
+                    <h3>Comments</h3>
+                </div>
 
                 <!-- Iterates over users comments with edit/delete fucntionality -->
                 {% for comment in comments %}
 
-                    <div class="border-top border-dark mt-2 text-center">
+                    <div id="profile-comment-list" 
+                         class="border-top border-dark mt-2 text-center collapse">
 
                         <!-- Comment Info -->
                         <h5>Your wrote @ {{ comment.post }} on <small>{{ comment.created_on }}</small></h5>
