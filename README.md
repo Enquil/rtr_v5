@@ -168,7 +168,7 @@ Now, lets make a user:
 And we get a good response, user is created, also notice you now have an option to create posts in the navbar
 ![sign up success](./images/manual_view_testing/signup_tests/test_signup_success.png)
 
-
+![sign up success](./images/manual_view_testing/signup_tests/test_signup_success.png)
 
 ## Known Issues
 

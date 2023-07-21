@@ -2,6 +2,7 @@ from django.shortcuts import reverse
 from django.test import TestCase
 from django.contrib.auth.models import User
 from home.models import Post, Category, Comment
+from django.contrib.auth.models import AnonymousUser
 
 
 class TestPostView(TestCase):
@@ -60,10 +61,6 @@ class TestPostView(TestCase):
         self.assertEqual(post.number_of_likes(), 0)
 
     def test_comment(self):
-        '''
-        This has been edited since i dont use the 'commented' boolean
-        I put some redundancy in just to be safe
-        '''
 
         user = User.objects.get(id=1)
         post = Post.objects.get(id=1)
@@ -77,10 +74,10 @@ class TestPostView(TestCase):
         })
         '''
         Re-check above statement but with False instead
-        This is the redundancy mentioned above
         '''
         self.assertFalse(post.comments.count() == 0)
         self.assertEqual(len(response.context['comments']), 1)
+        # assert the correct comment is in the dict
         self.assertEqual(
             response.context['comments'][0].body, 'This is a test comment'
         )
@@ -103,7 +100,16 @@ class TestPostView(TestCase):
         response = self.client.get(reverse('post_detail', args=[post.slug]))
         self.assertTrue(response.context['liked'] is True)
 
-    def test_comment_form_is_passed(self):
+    def test_comment_not_logged_in_redirects(self):
 
-        user = User.objects.get(id=1)
+        user = AnonymousUser()
         post = Post.objects.get(id=1)
+
+        response = self.client.post(reverse('post_detail', args=[post.slug]), {
+            'author': user,
+            'body': 'This is a test comment'
+        })
+
+        # assert status code is 302 and that anon_user is redirected to login
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, expected_url='/accounts/login/')
