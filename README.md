@@ -145,7 +145,7 @@ Now, let's try creating a post when not logged in:
 Okay, let's check out the post_detail_view, also added a comment to test:
 ![create post while not logged in](./images/manual_view_testing/post_detail_tests/test_post_detail_not_logged_in.png)
 
-Comment did not post, but something is wrong:
+Comment did not post, but something is wrong, this should redirect to login:
 ![create post while not logged in](./images/manual_view_testing/post_detail_tests/uh_oh.png)
 
 ## Known Issues

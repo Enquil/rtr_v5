@@ -24,20 +24,23 @@ def post_detail(request, slug, *args, **kwargs):
 
     if request.method == "POST":
 
-        comment_form = CommentForm(data=request.POST)
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect(reverse('account_login'))
+        else:
+            comment_form = CommentForm(data=request.POST)
 
-        if comment_form.is_valid():
+            if comment_form.is_valid():
 
-            comment_form.instance.email = request.user.email
-            comment_form.instance.author = request.user
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.save()
-            messages.add_message(
-                request, messages.SUCCESS,
-                'Your comment has beens posted!'
-            )
-            comment_form = CommentForm()
+                comment_form.instance.email = request.user.email
+                comment_form.instance.author = request.user
+                comment = comment_form.save(commit=False)
+                comment.post = post
+                comment.save()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Your comment has beens posted!'
+                )
+                comment_form = CommentForm()
     else:
         comment_form = CommentForm()
 
