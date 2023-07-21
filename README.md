@@ -72,6 +72,10 @@ I consider all models to be sourced somewhat from CodeInstitute
 
 ## Design
 
+### Visual Structure
+
+### Color Scheme
+
 ## Testing
 
 ### Unit testing
