@@ -126,6 +126,17 @@ Set up a couple of posts in different categories
 ![Manual test posts](./images/manual_view_testing/posts_manual_testing.png)
 
 Homepage when not logged in:
+![Homepage](./images/manual_view_testing/homepage_and_filtering/homepage_not_logged_in.png)
+
+Pagination:
+![Pagination](./images/manual_view_testing/homepage_and_filtering/test_pagination.png)
+
+Back to homepage:
+![Homepage](./images/manual_view_testing/homepage_and_filtering/homepage_not_logged_in.png)
+
+Now to filter 2 separate categories for good measure:
+![business_filter](./images/manual_view_testing/homepage_and_filtering/test_filter_business.png)
+![opinions_filter](./images/manual_view_testing/homepage_and_filtering/test_filter_opinions.png)
 
 ## Known Issues
 
