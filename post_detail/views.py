@@ -16,19 +16,24 @@ def post_detail(request, slug, *args, **kwargs):
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
 
+    # set liked and commented to False for handling template rendering
     liked = False
     commented = False
 
+    # check if user exists in post.likes and set liked to True if so
     if post.likes.filter(id=request.user.id).exists():
         liked = True
 
+    # Comment Handling
     if request.method == "POST":
 
+        # Redirect to login if trying to comment while not logged in
         if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse('account_login'))
+        # if logged in
         else:
             comment_form = CommentForm(data=request.POST)
-
+            # Check validity of form
             if comment_form.is_valid():
 
                 comment_form.instance.email = request.user.email
@@ -41,6 +46,7 @@ def post_detail(request, slug, *args, **kwargs):
                     'Your comment has beens posted!'
                 )
                 comment_form = CommentForm()
+    # If not post-request
     else:
         comment_form = CommentForm()
 
