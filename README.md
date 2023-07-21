@@ -138,6 +138,16 @@ Now to filter 2 separate categories for good measure:
 ![business_filter](./images/manual_view_testing/homepage_and_filtering/test_filter_business.png)
 ![opinions_filter](./images/manual_view_testing/homepage_and_filtering/test_filter_opinions.png)
 
+Now, let's try creating a post when not logged in:
+(Note the URL)
+![create post while not logged in](./images/manual_view_testing/redirection_when_not_logged_in/test_create_post_not_logged_in.png)
+
+Okay, let's check out the post_detail_view, also added a comment to test:
+![create post while not logged in](./images/manual_view_testing/post_detail_tests/test_post_detail_not_logged_in.png)
+
+Comment did not post, but something is wrong:
+![create post while not logged in](./images/manual_view_testing/post_detail_tests/uh_oh.png)
+
 ## Known Issues
 
 ## Future Implementation
