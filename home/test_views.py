@@ -53,12 +53,6 @@ class TestPostList(TestCase):
 
     def test_filter_by_category(self):
 
-        post = Post.objects.get(id=1)
-        post2 = Post.objects.get(id=2)
-        response = self.client.get('/')
-
-    def test_filter_by_category(self):
-
         # gets all posts and checks how many there are, should return 2
         posts = Post.objects.all()
         response = self.client.get('/')
