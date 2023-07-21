@@ -162,6 +162,8 @@ Redirects as it should, let's try logging in with a user that has not created th
 And we get a 403 response, as expected  
 ![edit post redirect anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_wrong_user.png)
 
+Now, let's make a user:
+
 ## Known Issues
 
 ## Future Implementation
