@@ -145,8 +145,22 @@ Now, let's try creating a post when not logged in:
 Okay, let's check out the post_detail_view, also added a comment to test:
 ![create post while not logged in](./images/manual_view_testing/post_detail_tests/test_post_detail_not_logged_in.png)
 
-Comment did not post, but something is wrong, this should redirect to login:
+Comment did not post, but something is wrong, this should redirect to login:  
 ![create post while not logged in](./images/manual_view_testing/post_detail_tests/uh_oh.png)
+
+Bad statement in post_detail.views.py, let's try again:
+![retry commenting when not logged in](./images/manual_view_testing/post_detail_tests/test_retry_comment_anon_user.png)
+![create post while not logged in](./images/manual_view_testing/post_detail_tests/test_fixed_anon_user.png)
+Fixed, note that the redirection is not handle by djangos @login_required decorator
+
+Now let's try and edit a post when not logged in, just change the url from post_detail to edit_post:
+![edit post when anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_anon_user.png)
+
+Redirects as it should, let's try logging in with a user that has not created the post in question:
+![edit post redirect anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_anon_user_redirect.png)
+
+And we get a 403 response, as expected  
+![edit post redirect anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_wrong_user.png)
 
 ## Known Issues
 
