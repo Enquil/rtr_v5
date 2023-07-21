@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12 text-center"><h3>Select your posts or comments</h3></div>
+            <div class="col-12 text-center"><h3>Select your posts or comments to view</h3></div>
             <div class="col-12 col-md-5 col-lg-4 text-center 
                         border-dark offset-md-1 offset-lg-2">
                 <!-- Collapse toggler for posts -->
@@ -27,7 +27,7 @@
                     {% for post in posts %}
 
                         <div id="profile-post-list" 
-                             class="collapse border-top border-dark mt-2 text-center">
+                             class="collapse border mt-2 text-center box-shadow-smol">
 
                             <!-- post info -->
                             <h5>{{ post.title }}</h5>
@@ -95,7 +95,7 @@
                 {% for comment in comments %}
 
                     <div id="profile-comment-list" 
-                         class="border-top border-dark mt-2 text-center collapse">
+                         class="border mt-2 text-center collapse box-shadow-smol">
 
                         <!-- Comment Info -->
                         <h5>Your wrote @ {{ comment.post }} on <small>{{ comment.created_on }}</small></h5>
