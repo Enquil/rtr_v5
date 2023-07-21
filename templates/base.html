@@ -83,6 +83,7 @@
                 </li>
 
                 <!-- create_post link -->
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                   <a class="nav-link ms-2 me-2 text-dark fs-4" 
                      href="{% url 'create_post' %}">
@@ -90,6 +91,7 @@
                     Create Post
                   </a>
                 </li>
+                {% endif %}
 
                 <!-- Category dropdown menu -->
                 <li class="nav-item dropdown">
@@ -153,7 +155,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link fs-4 ms-2 text-dark btn-success" 
+                    <a class="nav-link fs-4 ms-2 text-dark bg-light-green" 
                        href="{% url 'account_signup' %}">
                       Sign Up
                     </a>

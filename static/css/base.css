@@ -99,3 +99,7 @@ input:focus {
 .bg-ghost {
     background-color: #c9bfc0;
 }
+
+.bg-light-green {
+    background-color: #82d682;
+}
