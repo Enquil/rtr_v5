@@ -9,13 +9,15 @@ from django.contrib import messages
 @login_required
 def delete_post(request, id):
 
+    # if user tries to access function through url
+    if request.method == 'GET':
+        raise PermissionDenied
+
     if request.method == 'POST':
 
-        # get post corresponding to id in request.POST and title
+        # get post corresponding to id in request.POST
         post = Post.objects.get(id=id)
-        title = post.title
-
-        # if user is post-owner, delete it
+        # if user is post owner, delete it
         if post.author.id == request.user.id:
 
             post.delete()
@@ -23,11 +25,14 @@ def delete_post(request, id):
             # return message to confirm deletion
             messages.add_message(
                 request, messages.SUCCESS,
-                f'Successfully deleted {post.title}'
+                f'Successfully deleted post'
             )
             # return to profile
             return HttpResponseRedirect(reverse('profile'))
-        # if not
+
+        # if not users post
+        # this should not be callable
+        # but just in case someone really fiddles with the page
         else:
             raise PermissionDenied
 
@@ -35,12 +40,14 @@ def delete_post(request, id):
 @login_required
 def delete_comment(request, id):
 
-    if request.method == 'POST':
+    comment = Comment.objects.get(id=id)
+    if request.method == 'GET' or comment.id != request.user.id:
+        raise PermissionDenied
 
+    else:
         # get comment corresponding to id in request.POST
         comment = Comment.objects.get(id=id)
-
-        # if user is comment-owner, delete it
+        # if user is comment owner, delete it
         if comment.author.id == request.user.id:
 
             comment.delete()
@@ -52,6 +59,3 @@ def delete_comment(request, id):
             )
             # return to profile
             return HttpResponseRedirect(reverse('profile'))
-        # if not
-        else:
-            raise PermissionDenied

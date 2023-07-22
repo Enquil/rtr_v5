@@ -82,7 +82,9 @@ I consider all models to be sourced somewhat from CodeInstitute
 
 ### Lighthouse Test
 
-### JsHint
+### JShint
+
+### pep-8
 
 ### Unit testing
 
