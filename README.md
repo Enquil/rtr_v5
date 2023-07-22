@@ -102,6 +102,9 @@ The exception are posts and comments which can be found in the actual userprofil
 
 ### JShint
 
+At the moment, there is only one function using JavaScript in this projec, the message timeout function
+![jshint test](./images/jshint/jshint_test.png)
+
 ### pep-8
 
 ### Unit testing
