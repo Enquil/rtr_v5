@@ -215,6 +215,29 @@ With this:
 All good, no more double comments
 ![test comment fixed](./images/manual_view_testing/comment_test/test_comment_fix_success.png)
 
+Sweet, let's go to the profile, click your username and select:  
+![test profile navigation](./images/manual_view_testing/test_profile/test_navigate_profile.png)
+
+Looks, good but where are the posts and comments?
+![test profile navigation success](./images/manual_view_testing/test_profile/test_navigate_profile_success.png)
+
+Ah, just click any of the blue 'buttons'
+![test profile show user created content](./images/manual_view_testing/test_profile/test_show_user_created_content.png)
+
+Looks decent, let's remove one of those double comments, click delete and this modal should show
+![test profile remove comment](./images/manual_view_testing/test_profile/test_delete_comment.png)
+
+It's gone from the profile page at least, but is it actually GONE?
+![test profile remove comment](./images/manual_view_testing/test_profile/test_delete_comment_success.png)
+
+And let's check the post, seems it deleted as it should
+![check removed comment post detail](./images/manual_view_testing/test_profile/check_comment_delete_post_detail.png)
+
+Let's go back to the profile and edit that post, i think it needs another lorem ipsum in there somewhere, just click edit
+![test profile delete post](./images/manual_view_testing/test_profile/check_comment_delete_post_detail.png)
+
+
+
 ## Known Issues
 
 ## Future Implementations

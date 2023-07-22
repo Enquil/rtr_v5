@@ -14,7 +14,7 @@ def delete_post(request, id):
 
     # if someone is trying to delete someone elses model instance
     # By fiddling with form for example OR accessing through the url field
-    if request.method == 'GET' or comment.id != request.user.id:
+    if request.method == 'GET' or post.author.id != request.user.id:
         raise PermissionDenied
 
     if request.method == 'POST':
@@ -49,7 +49,7 @@ def delete_comment(request, id):
 
     # if someone is trying to delete someone elses model instance
     # By fiddling with form for example OR accessing through the url field
-    if request.method == 'GET' or comment.id != request.user.id:
+    if request.method == 'GET' or comment.author.id != request.user.id:
         raise PermissionDenied
 
     else:
