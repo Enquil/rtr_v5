@@ -3,11 +3,47 @@
 ## Table of Contents
 
 ## Description
+
 Welcome to rtr_v5, This is a reddit-style newspage where users are supposed to be able to share whatever thoughts ideas or news they want
 
 ## Technologies Used
 
-Data modeling - DBSchema
+### Languages, frameworks and libraries
+
+* Python
+* HTML
+* CSS
+* Javascript
+
+* SQL database: ElephantSQL
+* Jquery
+* Bootstrap
+
+### Planning Tools
+
+* Data modeling - DBSchema
+* Kanban: Github
+
+### Installed dependencies (requirements.txt)
+
+* asgiref==3.7.2
+* cloudinary==1.33.0
+* coverage==7.2.7
+* dj-database-url==2.0.0
+* dj3-cloudinary-storage==0.0.6
+* Django==3.2.19
+* django-allauth==0.41.0
+* django-nose==1.4.7
+* django-summernote==0.8.20.0
+* gunicorn==20.1.0
+* nose==1.3.7
+* oauthlib==3.2.2
+* psycopg2==2.9.6
+* python3-openid==3.2.0
+* pytz==2023.3
+* requests-oauthlib==1.3.1
+* sqlparse==0.4.4
+* urllib3==1.26.16
 
 ## Planning
 
@@ -17,7 +53,8 @@ Last day of each sprint, i took some time to re-assess next phase based on progr
 
 ### Sprint Planning
 
-See [Kanban Board](https://github.com/users/Enquil/projects/6/views/1 "Kanban Board") for a more detailed view of issues/tasks, it's set to public
+See [Kanban Board](https://github.com/users/Enquil/projects/6/views/1 "Kanban Board") for a more detailed view of issues/tasks, it should be public
+Including image because i thought it was public the last time as well, it was not.
 
 #### Sprint 1, 12/6-19/6
 
@@ -51,7 +88,7 @@ General implementations:
     * Style templates
     * Tests
 
-### Omitted functionality
+### Omitted functionality (Scope)
 
 Due to time-constraints, i chose to omit the following functionality that was originally planned:
   
