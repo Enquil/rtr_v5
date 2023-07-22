@@ -43,7 +43,7 @@ def post_detail(request, slug, *args, **kwargs):
                 comment.save()
                 messages.add_message(
                     request, messages.SUCCESS,
-                    'Your comment has beens posted!'
+                    'Your comment has been posted!'
                 )
                 comment_form = CommentForm()
     # If not post-request
