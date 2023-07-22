@@ -87,7 +87,7 @@ I used 2 different unit test libraries/modules:
 
 This was because coverage says it wants me to test the test.py files as well,  
 I realize i might make a mistake here because i didnt test them,  
-but all topics i can find about it says that is not something you should/need to do.  
+but topics i can find about it says that is not something you should not do/need to do.  
 Also, i wouldnt have a clue where to begin.  
 Find results below ->
 
@@ -144,7 +144,7 @@ Now to filter 2 separate categories for good measure:
 
 Now, let's try creating a post when not logged in:
 (Note the URL)
-![create post while not logged in](./images/manual_view_testing/redirection_when_not_logged_in/test_create_post_not_logged_in.png)
+![create post while not logged in](./images/manual_view_testing/anonymous_user_testing/test_create_post_not_logged_in.png)
 
 Okay, let's check out the post_detail_view, also added a comment to test:
 ![create post while not logged in](./images/manual_view_testing/post_detail_tests/test_post_detail_not_logged_in.png)
@@ -158,20 +158,22 @@ Bad statement in post_detail.views.py, let's try again:
 Fixed, note that the redirection is not handle by djangos @login_required decorator
 
 Now let's try and edit a post when not logged in, just change the url from post_detail to edit_post:
-![edit post when anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_anon_user.png)
+![edit post when anon user](./images/manual_view_testing/anonymous_user_testing/test_edit_post_anon_user.png)
 
 Redirects as it should, let's try logging in with a user that has not created the post in question:
-![edit post redirect anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_anon_user_redirect.png)
+![edit post redirect anon user](./images/manual_view_testing/anonymous_user_testing/test_edit_post_anon_user_redirect.png)
 
 And we get a 403 response, as expected  
-![edit post redirect anon user](./images/manual_view_testing/edit_post_tests/test_edit_post_wrong_user.png)
+![edit post wrong user](./images/manual_view_testing/edit_post_tests/test_edit_post_wrong_user.png)
 
-Now, lets make a user:
+Last 2 tests when Anonymous User (Not logged in), delete a comment, and delete a post:  
+![deleting comment anon](./images/manual_view_testing/anonymous_user_testing/test_delete_comment_not_logged_in.png)
+![delete comment redirect](./images/manual_view_testing/anonymous_user_testing/test_delete_comment_redirect.png)
+
+Okay, everything redirects as it should, Now, lets create a user:
 ![sign up test](./images/manual_view_testing/signup_tests/test_signup.png)
 
-And we get a good response, user is created, also notice you now have an option to create posts in the navbar
-![sign up success](./images/manual_view_testing/signup_tests/test_signup_success.png)
-
+And we get a good response, user is created, also notice you now have an option to create posts in the navbar and some user options
 ![sign up success](./images/manual_view_testing/signup_tests/test_signup_success.png)
 
 ## Known Issues
