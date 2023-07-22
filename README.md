@@ -188,6 +188,12 @@ Okay, everything redirects as it should, Now, lets create a user:
 And we get a good response, user is created, also notice you now have an option to create posts in the navbar and some user options
 ![sign up success](./images/manual_view_testing/signup_tests/test_signup_success.png)
 
+Lets create a post straight away:
+![test create post](./images/manual_view_testing/create_post_testing/test_create_post_user.png)
+
+Okay, looks good, leave a like for successful post!
+![test create post](./images/manual_view_testing/create_post_testing/test_create_post_success.png)
+
 ## Known Issues
 
 ## Future Implementation
