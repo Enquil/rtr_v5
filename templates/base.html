@@ -51,7 +51,6 @@
             <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
             <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
             <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon//favicon-16x16.png' %}">
-            <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 
         {% endblock %}
 
@@ -138,7 +137,7 @@
                       <i class="fa-solid fa-user"></i>
                       {{ user.username }}
                     </a>
-                    <div class="dropdown-menu p-0 border-0 m-0 bg-ghost" aria-labelledby="userDropDown">
+                    <div class="dropdown-menu p-0 border-0 m-0" aria-labelledby="userDropDown">
                       <a class="dropdown-item bg-ghost text-dark fs-5" href="{% url 'profile' %}">
                         Profile
                       </a>

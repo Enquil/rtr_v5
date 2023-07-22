@@ -12,7 +12,7 @@ input:focus {
 }
 
 
-/* Edited Bootstrap */
+/* Vertical rule from bootstrap */
 
 .vr {
     width: 1px;
@@ -22,8 +22,17 @@ input:focus {
 
 /* Navbar styling */
 
+.dropdown-item {
+    margin-bottom: 1px;
+    box-shadow: 1px 1px 2px rgb(150, 150, 150);
+}
+
 .dropdown-item:hover {
     background-color: #bde0ff;
+}
+
+.nav-link:hover {
+    text-shadow: 0px 0px 10px rgb(100, 100, 100);
 }
 
 
