@@ -59,22 +59,40 @@ Due to time-constraints, i chose to omit the following functionality that was or
 * News-api, have not recieved a reply about extra requests still
 * Removed cloudinary image fields for posts, this is due to switching to function views and i did not have time to learn the differences in how forms are handled
 
-## Models
-
-### Model used and Schema
+## Models used and Schema
 
 https://dbdiagram.io/d/649b270a02bd1c4a5e274ea3
 ![Data Models](./images/model_schema.png)
 
 Standard Django User Model @ https://docs.djangoproject.com/en/4.2/ref/contrib/auth/
 
-I consider all models to be sourced somewhat from CodeInstitute
+I consider all models to be sourced in some way from CodeInstitute, albeit modified to suit my needs.
+Exception is the category model.
 
 ## Design
 
+Same as with earlier versions, very simple and in your face about what the user can do
+
 ### Visual Structure
 
+My only rule for the structure was very simple, everything should be accessible from the navbar and easily understandable.  
+The exception are posts and comments which can be found in the actual userprofile.
+
 ### Color Scheme
+
+* #e4ebf1, alice blue
+  * background
+
+* #bde0ff, a darker shade of alice-blue
+  * dropdown-items:hover highlighting
+  * Posts and Comments 'buttons' in user-profile
+
+* #c9bfc0, a reddish version of ghost
+  * Navbar
+  * Footer
+
+* #82d682, light-green
+  * Sign Up button
 
 ## Testing
 

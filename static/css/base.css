@@ -77,20 +77,12 @@ input:focus {
     box-shadow: 2px 2px 5px rgb(150, 150, 150);
 }
 
-.feldgrau {
-    color: #3F5E5A;
-}
-
-.bg-feldgrau {
-    background-color: #3F5E5A;
-}
-
 .alice {
-    color: #E4EBF1;
+    color: #e4ebf1;
 }
 
 .bg-alice {
-    background-color: #E4EBF1;
+    background-color: #e4ebf1;
 }
 
 .alice-dark {
@@ -107,6 +99,10 @@ input:focus {
 
 .bg-ghost {
     background-color: #c9bfc0;
+}
+
+.light-green {
+    color: #82d682;
 }
 
 .bg-light-green {
