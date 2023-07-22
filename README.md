@@ -206,6 +206,21 @@ however, pressing shift + f5 prompts me to resend the form, let's do that
 
 Okay, now it's posting the comment again, we dont want that, let's investigate
 
+Replaced this statement in post_detail.views:
+![test create fix before](./images/manual_view_testing/comment_test/test_fix_double_comment_before.png)
+
+With this:
+![test comment fix after](./images/manual_view_testing/comment_test/test_fix_double_comment_after.png)
+
+All good, no more double comments
+![test comment fixed](./images/manual_view_testing/comment_test/test_comment_fix_success.png)
+
 ## Known Issues
 
-## Future Implementation
+## Future Implementations
+
+* Comment Reply System HIGH
+* Comment edit view, MAYBE
+* News API, HIGH
+* Financial API, HIGH
+* 

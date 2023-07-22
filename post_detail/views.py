@@ -45,7 +45,10 @@ def post_detail(request, slug, *args, **kwargs):
                     request, messages.SUCCESS,
                     'Your comment has been posted!'
                 )
-                comment_form = CommentForm()
+                return HttpResponseRedirect(
+                    reverse('post_detail',
+                            args=[slug])
+                )
     # If not post-request
     else:
         comment_form = CommentForm()
