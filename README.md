@@ -216,27 +216,71 @@ All good, no more double comments
 ![test comment fixed](./images/manual_view_testing/comment_test/test_comment_fix_success.png)
 
 Sweet, let's go to the profile, click your username and select:  
-![test profile navigation](./images/manual_view_testing/test_profile/test_navigate_profile.png)
+![test profile navigation](./images/manual_view_testing/profile_test/test_navigate_profile.png)
 
 Looks, good but where are the posts and comments?
-![test profile navigation success](./images/manual_view_testing/test_profile/test_navigate_profile_success.png)
+![test profile navigation success](./images/manual_view_testing/profile_test/test_navigate_profile_success.png)
 
 Ah, just click any of the blue 'buttons'
-![test profile show user created content](./images/manual_view_testing/test_profile/test_show_user_created_content.png)
+![test profile show user created content](./images/manual_view_testing/profile_test/test_show_user_created_content.png)
 
 Looks decent, let's remove one of those double comments, click delete and this modal should show
-![test profile remove comment](./images/manual_view_testing/test_profile/test_delete_comment.png)
+![test profile remove comment](./images/manual_view_testing/profile_test/test_delete_comment.png)
 
 It's gone from the profile page at least, but is it actually GONE?
-![test profile remove comment](./images/manual_view_testing/test_profile/test_delete_comment_success.png)
+![test profile remove comment](./images/manual_view_testing/profile_test/test_delete_comment_success.png)
 
 And let's check the post, seems it deleted as it should
-![check removed comment post detail](./images/manual_view_testing/test_profile/check_comment_delete_post_detail.png)
+![check removed comment post detail](./images/manual_view_testing/profile_test/check_comment_delete_post_detail.png)
 
 Let's go back to the profile and edit that post, i think it needs another lorem ipsum in there somewhere, just click edit
-![test profile delete post](./images/manual_view_testing/test_profile/check_comment_delete_post_detail.png)
+![test profile edit post](./images/manual_view_testing/profile_test/test_edit_post_edit_button.png)
+
+Okay, we got in to the view at least
+![test edit post view](./images/manual_view_testing/edit_post_tests/test_edit_post_view.png)
+
+Nice, looks like it updated, let's go check it ACTUALLY DID
+![test profile post edited](./images/manual_view_testing/profile_test/test_edit_post_profile_updated.png)
+
+Lovely jovely, now, let's go delete the post
+![test profile post edited post detail](./images/manual_view_testing/edit_post_tests/test_edit_post_post_detail.png)
+
+Modal shows at least, fingers crossed this works
+![test profile delete post](./images/manual_view_testing/profile_test/test_delete_post_modal.png)
+
+Okay, post and post.comments are gone from the profile, managed to capture the message this time as well!
+![test profile delete post success](./images/manual_view_testing/test_delete_post/test_delete_post_success.png)
+
+Let's check for the models in the admin just to make sure they're actually gone
+![test profile delete post success](./images/manual_view_testing/test_delete_post/test_delete_post_admin_view.png)
+![test profile delete post success](./images/manual_view_testing/test_delete_post/test_delete_post_comments_admin_view.png)
+
+Looks like they're gone, speaking of which, let's try the admin actions i created  
+First, lets disable all posts
+![test admin disable posts](./images/manual_view_testing/test_admin_actions/test_delete_post_comments_admin_view.png)
+
+Well, they're disabled, but did it work?
+![test admin posts disabled](./images/manual_view_testing/test_admin_actions/test_delete_post_comments_admin_view.png)
+
+Looks like!  
+![confirm posts disabled](./images/manual_view_testing/test_admin_actions/confirm_posts_disabled.png)
+
+Alright, re-publish those posts and disable the comments for the post: testing new category instead  
+![publish posts](./images/manual_view_testing/test_admin_actions/posts_published.png)
+![publish posts](./images/manual_view_testing/test_admin_actions/test_disable_comments.png)
+
+Okay, the boolean changes at least
+![publish posts](./images/manual_view_testing/test_admin_actions/comments_disabled.png)
+And the comments are gone, nice!
+![publish posts](./images/manual_view_testing/test_admin_actions/confirm_comments_disabled.png)
+
+And back again:
+![publish posts](./images/manual_view_testing/test_admin_actions/approve_comments.png)
+![publish posts](./images/manual_view_testing/test_admin_actions/comments_approved.png)
+![publish posts](./images/manual_view_testing/test_admin_actions/confirm_comments_approved.png)
 
 
+That concludes the manual testing of the current functions on the site, and should give you an idea of flow-control
 
 ## Known Issues
 
