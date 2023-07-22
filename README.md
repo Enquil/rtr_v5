@@ -194,6 +194,18 @@ Lets create a post straight away:
 Okay, looks good, leave a like for successful post!
 ![test create post](./images/manual_view_testing/create_post_testing/test_create_post_success.png)
 
+Let's leave a comment while we're at it
+![test create post](./images/manual_view_testing/comment_test/test_comment.png)
+
+Okay, comment is posting as it should
+![test create post](./images/manual_view_testing/comment_test/test_comment_success.png)
+
+however, pressing shift + f5 prompts me to resend the form, let's do that
+![test create post](./images/manual_view_testing/comment_test/test_comment_uh_oh.png)
+![test create post](./images/manual_view_testing/comment_test/test_comment_double_comment.png)
+
+Okay, now it's posting the comment again, we dont want that, let's investigate
+
 ## Known Issues
 
 ## Future Implementation
