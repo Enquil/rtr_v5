@@ -171,7 +171,8 @@ Last 2 tests when Anonymous User (Not logged in), delete a comment, and delete a
 ![delete comment redirect](./images/manual_view_testing/anonymous_user_testing/test_delete_comment_redirect.png)
 
 Looks ok, now let's try it with a post:
-
+![delete post anon user](./images/manual_view_testing/anonymous_user_testing/test_delete_post_anon.png)
+![delete post redirect](./images/manual_view_testing/anonymous_user_testing/test_delete_post_redirect.png)
 
 Okay, everything redirects as it should, Now, lets create a user:
 ![sign up test](./images/manual_view_testing/signup_tests/test_signup.png)
