@@ -78,6 +78,12 @@ I consider all models to be sourced somewhat from CodeInstitute
 
 ## Testing
 
+### Responsiveness Test
+
+### Lighthouse Test
+
+### JsHint
+
 ### Unit testing
 
 I used 2 different unit test libraries/modules:
