@@ -36,9 +36,12 @@ Welcome to rtr_v5, This is a reddit-style newspage where users are supposed to b
 * django-nose==1.4.7
 * django-summernote==0.8.20.0
 * gunicorn==20.1.0
+* iniconfig==2.0.0
 * nose==1.3.7
 * oauthlib==3.2.2
+* pluggy==1.2.0
 * psycopg2==2.9.6
+* pytest==7.4.0
 * python3-openid==3.2.0
 * pytz==2023.3
 * requests-oauthlib==1.3.1
