@@ -9,8 +9,12 @@ from django.contrib import messages
 @login_required
 def delete_post(request, id):
 
-    # if user tries to access function through url
-    if request.method == 'GET':
+    # get the model instance with corresponding id from param
+    post = Post.objects.get(id=id)
+
+    # if someone is trying to delete someone elses model instance
+    # By fiddling with form for example OR accessing through the url field
+    if request.method == 'GET' or comment.id != request.user.id:
         raise PermissionDenied
 
     if request.method == 'POST':
@@ -40,7 +44,11 @@ def delete_post(request, id):
 @login_required
 def delete_comment(request, id):
 
+    # get the model instance with corresponding id from param
     comment = Comment.objects.get(id=id)
+
+    # if someone is trying to delete someone elses model instance
+    # By fiddling with form for example OR accessing through the url field
     if request.method == 'GET' or comment.id != request.user.id:
         raise PermissionDenied
 
