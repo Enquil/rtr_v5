@@ -8,6 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('status', 'author')
 
     list_display = (
+        'id',
         'author',
         'title',
         'slug',

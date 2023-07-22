@@ -167,8 +167,11 @@ And we get a 403 response, as expected
 ![edit post wrong user](./images/manual_view_testing/edit_post_tests/test_edit_post_wrong_user.png)
 
 Last 2 tests when Anonymous User (Not logged in), delete a comment, and delete a post:  
-![deleting comment anon](./images/manual_view_testing/anonymous_user_testing/test_delete_comment_not_logged_in.png)
+![delete comment anon user](./images/manual_view_testing/anonymous_user_testing/test_deleting_comment_not_logged_in.png)
 ![delete comment redirect](./images/manual_view_testing/anonymous_user_testing/test_delete_comment_redirect.png)
+
+Looks ok, now let's try it with a post:
+
 
 Okay, everything redirects as it should, Now, lets create a user:
 ![sign up test](./images/manual_view_testing/signup_tests/test_signup.png)
