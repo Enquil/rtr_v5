@@ -32,8 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-enquil-rtrv5-nkpabkp6dae.ws-eu102.gitpod.io',
-    '8000-enquil-rtrv5-nkpabkp6dae.ws-eu101.gitpod.io'
+    'rtr_v5.herokuapp.com',
+    'localhost'
 ]
 
 
