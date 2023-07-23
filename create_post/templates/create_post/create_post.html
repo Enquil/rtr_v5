@@ -9,7 +9,7 @@
             <div class="col-12 text-center">
 
                 <!-- form -->
-                <form action="" method="post" >
+                <form id="create-post-form" action="" method="post" >
                     {% csrf_token %}
 
                     <!-- title -->
@@ -64,4 +64,5 @@
             </div>
         </div>
     </div>
+    <div id="page-overlay" class="overlay"></div>
 {% endblock %}
