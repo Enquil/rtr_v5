@@ -145,6 +145,9 @@ The exception are posts and comments which can be found in the actual userprofil
 At the moment, there is only one function using JavaScript in this projec, the message timeout function
 ![jshint test](./images/jshint/jshint_test.png)
 
+Form, multi-submit fix:  
+![form multi fix](./images/jshint/multi_submit_fix.png)
+
 ### pep-8
 
 I tested all files that i've edited in some way (i hope)  
@@ -418,9 +421,12 @@ That concludes the manual testing of the current functions on the site, and shou
 
 ### Form submitting multiple times (TEMPORARY FIX)
 
-When spam-clicking a form submit button (comment-form specifically), the form submits multiple times  
+When spam-clicking a form submit button (comment-form specifically), the form submits multiple times, like so:
+![multi submit bug](./images/manual_view_testing/test_admin_actions/confirm_comments_approved.png)
+
 Temporary Fix: Added a js function to prevent default and put an overlay on top of the page until form is handled.  
-This should be switched to a function that disables the button instead, or even straight python could possibly work. 
+This should be switched to a function that disables the button instead, or even straight python could possibly work.
+Code snippet (form is replaced by id for relevant form):  
 
 ## Future Implementations
 
