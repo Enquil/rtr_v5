@@ -30,10 +30,10 @@ class PostList(ListView):
             return Post.objects.filter(
                     category=category,
                     status=1
-                   ).order_by('-created_on')
+                   )
         # just get all posts if category is None
         else:
-            return Post.objects.filter(status=1).order_by('-created_on')
+            return Post.objects.filter(status=1)
 
     def get_context_data(self, **kwargs):
         '''
