@@ -6,7 +6,7 @@
         <div class="row g-0">
 
             <div class="col-12 text-center">
-                <form action="" method="post" >
+                <form id="edit-post-form" action="" method="post" >
                     {% csrf_token %}
                     <div class="row mt-2 g-0">
                         <div class="col-12
@@ -50,4 +50,15 @@
             </div>
         </div>
     </div>
+    <div id="page-overlay"></div>
+    <script>
+        let ol = document.getElementById('page-overlay');
+        let form = document.getElementById('edit-post-form');
+
+        $(form).submit(function(e) {
+            e.preventDefault();
+            ol.classList.add('overlay');
+            form.submit();
+        });
+    </script>
 {% endblock %}
