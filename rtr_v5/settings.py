@@ -33,7 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'rtr_v5.herokuapp.com',
-    'localhost'
+    'localhost',
+    '8000-enquil-rtrv5-nkpabkp6dae.ws-eu102.gitpod.io',
 ]
 
 

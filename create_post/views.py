@@ -4,13 +4,15 @@ from home.models import Post
 from django.contrib.auth.models import User
 from .forms import PostForm
 from django.contrib import messages
-from django.shortcuts import (render, get_object_or_404,
-                              redirect, reverse)
-from django.http import (HttpResponse,
-                         HttpResponseRedirect)
+from django.shortcuts import (
+    render, get_object_or_404,
+    redirect, reverse
+)
+from django.http import (
+    HttpResponse, HttpResponseRedirect
+)
 from django.contrib.auth.decorators import login_required
 from django.template.defaultfilters import slugify
-import random
 
 
 @login_required
@@ -64,7 +66,7 @@ def create_post(request):
                     "post_form": PostForm(data=data)
                 },
                 )
-
+    # if request.GET
     else:
         return render(
             request,

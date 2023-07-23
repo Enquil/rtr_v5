@@ -1,7 +1,6 @@
 from home.models import Post
 from django.contrib.auth.models import User
 from django import forms
-from django.utils.translation import gettext_lazy as _
 
 
 class PostForm(forms.ModelForm):
