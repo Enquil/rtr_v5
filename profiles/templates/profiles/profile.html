@@ -61,7 +61,7 @@
 
                                     <div class="modal-footer">
 
-                                        <form class="inline-block" action="{% url 'delete_post' post.id %}" method="POST">
+                                        <form id="delete-post-form" class="inline-block" action="{% url 'delete_post' post.id %}" method="POST">
                                             {% csrf_token %}
                                             <button type="submit" class="btn btn-primary">Confirm</button>
                                         </form>
@@ -127,7 +127,7 @@
 
                                 <div class="modal-footer">
 
-                                    <form class="inline-block" action="{% url 'delete_comment' comment.id %}" method="POST">
+                                    <form id="delete-comment-form" class="inline-block" action="{% url 'delete_comment' comment.id %}" method="POST">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-primary">Confirm</button>
                                     </form>
@@ -146,4 +146,20 @@
             </div>
         </div>
     </div>
+    <script>
+        let ol = document.getElementById('page-overlay')
+        let deleteCommentForm = document.getElementById('delete-comment-form')
+        let deletePostForm = document.getElementById('delete-comment-form')
+
+        $(deleteCommentform).submit(function(e) {
+            e.preventDefault();
+            ol.classList.add('overlay')
+            form.submit();
+        });
+        $(deletePostform).submit(function(e) {
+            e.preventDefault();
+            ol.classList.add('overlay')
+            form.submit();
+        });
+    </script>
 {% endblock %}

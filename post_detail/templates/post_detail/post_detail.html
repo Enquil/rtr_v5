@@ -87,4 +87,13 @@
         {% endfor %}
     </div>
     <div id="page-overlay"></div>
+    <script>
+        let ol = document.getElementById('page-overlay')
+        let form = document.getElementById('comment-form')
+        $(form).submit(function(e) {
+            e.preventDefault();
+            ol.classList.add('overlay')
+            form.submit();
+        });
+    </script>
 {% endblock %}
