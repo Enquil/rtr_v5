@@ -122,15 +122,15 @@ The exception are posts and comments which can be found in the actual userprofil
 
 * #e4ebf1, alice blue
   * background
-
+  
 * #bde0ff, a darker shade of alice-blue
   * dropdown-items:hover highlighting
   * Posts and Comments 'buttons' in user-profile
-
+  
 * #c9bfc0, a reddish version of ghost
   * Navbar
   * Footer
-
+  
 * #82d682, light-green
   * Sign Up button
 
@@ -146,6 +146,10 @@ At the moment, there is only one function using JavaScript in this projec, the m
 ![jshint test](./images/jshint/jshint_test.png)
 
 ### pep-8
+
+Results from https://pep8ci.herokuapp.com/ by app:  
+
+#### create_post
 
 ### Unit testing
 

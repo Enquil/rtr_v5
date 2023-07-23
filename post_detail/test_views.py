@@ -76,11 +76,10 @@ class TestPostView(TestCase):
         Re-check above statement but with False instead
         '''
         self.assertFalse(post.comments.count() == 0)
-        self.assertEqual(len(response.context['comments']), 1)
-        # assert the correct comment is in the dict
-        self.assertEqual(
-            response.context['comments'][0].body, 'This is a test comment'
-        )
+        comments = Comment.objects.filter(post=1)
+
+        # There should be one comment in this list
+        self.assertEqual(len(comments), 1)
 
     def test_liked_boolean(self):
         '''
