@@ -138,6 +138,50 @@ The exception are posts and comments which can be found in the actual userprofil
 
 ### Responsiveness Test
 
+Responsiveness testing on https://responsivedesignchecker.com/
+I could not log in due to csrf token issues, so any view that requires login, is tested through the built in chrome tool  
+
+#### Home
+
+![lg home](./images/html_and_css/responsiveness/lg_home.png)
+![md home](./images/html_and_css/responsiveness/md_home.png)
+![md home](./images/html_and_css/responsiveness/sm_home.png)
+![sm home](./images/html_and_css/responsiveness/md_home.png)
+![sm home](./images/html_and_css/responsiveness/sm_home_lower.png)
+
+#### Post Detail
+
+![lg post detail](./images/html_and_css/responsiveness/lg_post_detail.png)
+![lg post detail 2](./images/html_and_css/responsiveness/lg_post_detail_lower.png)
+![md post detail](./images/html_and_css/responsiveness/md_post_detail.png)
+![md post detail 2](./images/html_and_css/responsiveness/md_post_detail_lower.png)
+![sm post detail](./images/html_and_css/responsiveness/sm_post_detail.png)
+![sm post detail 2](./images/html_and_css/responsiveness/sm_post_detail_lower.png)
+
+#### Sign Up
+
+![lg sign up](./images/html_and_css/responsiveness/lg_sign_up.png)
+![md sign up](./images/html_and_css/responsiveness/md_sign_up.png)
+![sm sign up](./images/html_and_css/responsiveness/sm_sign_up.png)
+
+#### Login
+
+![lg login](./images/html_and_css/responsiveness/lg_login.png)
+![md login](./images/html_and_css/responsiveness/md_login.png)
+![sm login](./images/html_and_css/responsiveness/sm_login.png)
+
+#### Create Post
+
+![lg create post](./images/html_and_css/responsiveness/lg_create_post.png)
+![md create post](./images/html_and_css/responsiveness/md_create_post.png)
+![sm create post](./images/html_and_css/responsiveness/sm_create_post.png)
+
+#### Edit Post
+
+![lg edit post](./images/html_and_css/responsiveness/lg_edit_post.png)
+![md edit post](./images/html_and_css/responsiveness/md_edit_post.png)
+![sm edit post](./images/html_and_css/responsiveness/sm_edit_post.png)
+
 ### Lighthouse Test
 
 ### JShint
@@ -150,7 +194,7 @@ Form, multi-submit fix:
 
 ### pep-8
 
-I tested all files that i've edited in some way (i hope)  
+I tested all files that i've edited in some way  
 Results from https://pep8ci.herokuapp.com/ by app:  
 
 #### create_post
@@ -427,6 +471,10 @@ When spam-clicking a form submit button (comment-form specifically), the form su
 Temporary Fix: Added a js function to prevent default and put an overlay on top of the page until form is handled.  
 This should be switched to a function that disables the button instead, or even straight python could possibly work.
 Code snippet (form is replaced by id for relevant form):  
+
+### Edit Post Form
+
+Not rendering as expected, should be wider, keeping as is for now, because it works and is not critical
 
 ## Future Implementations
 

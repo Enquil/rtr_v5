@@ -34,11 +34,6 @@ def delete_post(request, id):
             # return to profile
             return HttpResponseRedirect(reverse('profile'))
 
-        # if not users post, this should not be callable
-        # but just in case someone really fiddles with the page
-        else:
-            raise PermissionDenied
-
 
 @login_required
 def delete_comment(request, id):
