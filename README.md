@@ -147,9 +147,21 @@ At the moment, there is only one function using JavaScript in this projec, the m
 
 ### pep-8
 
+I tested all files that i've edited in some way (i hope)  
 Results from https://pep8ci.herokuapp.com/ by app:  
 
 #### create_post
+
+![create_post forms](./images/pep8ci/create_post_forms_result.png)
+![create_post urls](./images/pep8ci/create_post_urls.png)
+![create_post views](./images/pep8ci/create_post_views.png)
+
+#### delete_actions
+
+![create_post forms](./images/pep8ci/delete_actions_urls.png)
+![create_post urls](./images/pep8ci/delete_actions_views.png)
+
+#### 
 
 ### Unit testing
 
@@ -186,7 +198,15 @@ When you compare the 2, Nose and Coverage does not quite agree on what should be
 ![Coverage test p1](./images/unittest/coverage_test_p1.png)
 ![Coverage test p2](./images/unittest/coverage_test_p2.png)
 
-#### Testing as a user
+#### edit_post
+
+#### home
+
+#### post_detail
+
+#### profiles
+
+#### Testing from a user perspective
 
 I started from the homepage and went from there, i took a screenshot on each page to document the navigation process etc.  
 On each page, i also refreshed with shift + f5 to make sure there was no issues with cache for example.  
@@ -344,10 +364,12 @@ And back again:
 ![publish posts](./images/manual_view_testing/test_admin_actions/comments_approved.png)
 ![publish posts](./images/manual_view_testing/test_admin_actions/confirm_comments_approved.png)
 
-
 That concludes the manual testing of the current functions on the site, and should give you an idea of flow-control
 
 ## Known Issues
+
+* FORMS
+When spam-clicking a form submit button, the 
 
 ## Future Implementations
 
