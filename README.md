@@ -152,16 +152,72 @@ Results from https://pep8ci.herokuapp.com/ by app:
 
 #### create_post
 
+Forms  
 ![create_post forms](./images/pep8ci/create_post_forms_result.png)
+
+URLs  
 ![create_post urls](./images/pep8ci/create_post_urls.png)
+
+Views  
 ![create_post views](./images/pep8ci/create_post_views.png)
 
 #### delete_actions
 
-![create_post forms](./images/pep8ci/delete_actions_urls.png)
-![create_post urls](./images/pep8ci/delete_actions_views.png)
+URLs  
+![delete_actions urls](./images/pep8ci/delete_actions_urls.png)
 
-#### 
+Views  
+![delete_actions views](./images/pep8ci/delete_actions_views.png)
+
+#### edit_post
+
+URLs  
+![edit_post urls](./images/pep8ci/edit_post_urls.png)
+
+Views  
+![edit_post views](./images/pep8ci/edit_post_views.png)
+
+#### home
+
+Admin  
+![home admin](./images/pep8ci/home_admin.png)
+
+Context Processors  
+![home context processors](./images/pep8ci/home_context_processors.png)
+
+Models  
+![home models](./images/pep8ci/home_models.png)
+
+URLs  
+![home urls](./images/pep8ci/home_urls.png)
+
+Views  
+![home views](./images/pep8ci/home_views.png)
+
+#### post_detail
+
+Forms  
+![home views](./images/pep8ci/post_detail_forms.png)
+
+URLs  
+![home views](./images/pep8ci/post_detail_urls.png)
+
+Views  
+![home views](./images/pep8ci/post_detail_views.png)
+
+#### Profiles
+
+Admin  
+![home views](./images/pep8ci/profiles_admin.png)
+
+Models  
+![home views](./images/pep8ci/profiles_models.png)
+
+URLs  
+![home views](./images/pep8ci/profiles_urls.png)
+
+Views  
+![home views](./images/pep8ci/profiles_views.png)
 
 ### Unit testing
 
@@ -197,14 +253,6 @@ When you compare the 2, Nose and Coverage does not quite agree on what should be
 
 ![Coverage test p1](./images/unittest/coverage_test_p1.png)
 ![Coverage test p2](./images/unittest/coverage_test_p2.png)
-
-#### edit_post
-
-#### home
-
-#### post_detail
-
-#### profiles
 
 #### Testing from a user perspective
 
@@ -368,14 +416,21 @@ That concludes the manual testing of the current functions on the site, and shou
 
 ## Known Issues
 
-* FORMS
-When spam-clicking a form submit button, the 
+### Form submitting multiple times (TEMPORARY FIX)
+
+When spam-clicking a form submit button (comment-form specifically), the form submits multiple times  
+Temporary Fix: Added a js function to prevent default and put an overlay on top of the page until form is handled.  
+This should be switched to a function that disables the button instead, or even straight python could possibly work. 
 
 ## Future Implementations
 
+I chose to sort them by some urgency measure  
+
 * Comment Reply System HIGH
-* Edit comment view, MAYBE
-* News API, HIGH
-* Financial API, HIGH
-* User Settings HIGH
+* Post Images, HIGH
+* Edit comment view, LOW/MEDIUM  
+i think twitter might've gotten this one right actually
+* News API, LOW/MEDIUM
+* Financial API, MEDIUM
+* User Settings, HIGH
   * Change email, password etc.
