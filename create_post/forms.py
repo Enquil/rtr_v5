@@ -5,6 +5,7 @@ from django import forms
 
 class PostForm(forms.ModelForm):
 
+    # Define initial values for form fields
     def __init__(self, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
@@ -12,13 +13,16 @@ class PostForm(forms.ModelForm):
 
     class Meta:
 
+        # Define model being used
         model = Post
 
+        # Define model fields to be altered
         fields = (
             'title', 'category',
             'excerpt', 'content',
         )
 
+        # Style and input definition
         widgets = {
 
             'title': forms.TextInput(
@@ -47,6 +51,7 @@ class PostForm(forms.ModelForm):
                 }),
         }
 
+        # Custom labels
         labels = {
             'title': 'Choose your Title',
         }
