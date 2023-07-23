@@ -149,14 +149,14 @@
     <script>
         let ol = document.getElementById('page-overlay')
         let deleteCommentForm = document.getElementById('delete-comment-form')
-        let deletePostForm = document.getElementById('delete-comment-form')
+        let deletePostForm = document.getElementById('delete-pos-form')
 
-        $(deleteCommentform).submit(function(e) {
+        $(deleteCommentForm).submit(function(e) {
             e.preventDefault();
             ol.classList.add('overlay')
             form.submit();
         });
-        $(deletePostform).submit(function(e) {
+        $(deletePostForm).submit(function(e) {
             e.preventDefault();
             ol.classList.add('overlay')
             form.submit();
