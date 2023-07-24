@@ -75,16 +75,21 @@ def post_like(request, slug, *args, **kwargs):
     """
     post = get_object_or_404(Post, slug=slug)
     post_obj = Post.objects.get(slug=slug)
+
+    # check that the method is POST and user is not anon
     if request.method == "POST" and request.user.is_authenticated:
+        # Get the users profile
         user_profile = UserProfile.objects.get(user=request.user)
 
+        # If already liked
         if post.likes.filter(id=request.user.id).exists():
+            # remove like from post
             post.likes.remove(request.user)
+            # remove post from UserProfile.liked_posts
             user_profile.liked_posts.remove(post_obj)
-            print([x for x in user_profile.liked_posts.all()])
+        # If not, just add instead
         else:
             post.likes.add(request.user)
             user_profile.liked_posts.add(post_obj)
-            print([x for x in user_profile.liked_posts.all()])
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
