@@ -27,7 +27,7 @@ def post_detail(request, slug, *args, **kwargs):
 
     # Comment Handling
     if request.method == "POST":
-
+        parent_obj = None
         # Redirect to login if trying to comment while not logged in
         if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse('account_login'))
@@ -36,7 +36,6 @@ def post_detail(request, slug, *args, **kwargs):
             comment_form = CommentForm(data=request.POST)
             # Check validity of form
             if comment_form.is_valid():
-
                 comment_form.instance.email = request.user.email
                 comment_form.instance.author = request.user
                 comment = comment_form.save(commit=False)
