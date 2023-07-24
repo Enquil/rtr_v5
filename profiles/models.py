@@ -12,8 +12,15 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    liked_posts = models.ManyToManyField(Post, name='liked_posts')
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    liked_posts = models.ManyToManyField(
+        Post,
+        name='liked_posts'
+    )
 
     def __str__(self):
         return self.user.username

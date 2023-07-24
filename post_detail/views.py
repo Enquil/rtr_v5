@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from home.models import Post
 from .forms import CommentForm
+from profiles.models import UserProfile
 
 
 def post_detail(request, slug, *args, **kwargs):
@@ -73,11 +74,17 @@ def post_like(request, slug, *args, **kwargs):
     defensive programming to make sure.
     """
     post = get_object_or_404(Post, slug=slug)
-
+    post_obj = Post.objects.get(slug=slug)
     if request.method == "POST" and request.user.is_authenticated:
+        user_profile = UserProfile.objects.get(user=request.user)
+
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
+            user_profile.liked_posts.remove(post_obj)
+            print([x for x in user_profile.liked_posts.all()])
         else:
             post.likes.add(request.user)
+            user_profile.liked_posts.add(post_obj)
+            print([x for x in user_profile.liked_posts.all()])
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
