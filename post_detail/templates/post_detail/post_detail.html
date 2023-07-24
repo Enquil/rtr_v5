@@ -95,18 +95,14 @@
                                                 <h3 class="modal-title">Replying to {{ comment.author }}</h3>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="POST">
+                                                <form method="POST">
                                                     {% csrf_token %}
                                                     {{ comment_form }}
                                                     <input type="hidden" value="{{ comment.id }}" name="parent">
+                                                    <button type="submit" class="btn btn-primary">Confirm</button>
                                                 </form>
                                             </div>
                                                 <div class="modal-footer">
-                
-                                                    <form class="inline-block" action="" method="POST">
-                                                        {% csrf_token %}
-                                                        <button type="submit" class="btn btn-primary">Confirm</button>
-                                                    </form>
                                                     <button type="button" class="btn btn-secondary" 
                                                             data-bs-dismiss="modal" 
                                                             data-bs-target="#reply-modal-{{ comment.id }}">
