@@ -79,10 +79,42 @@
                         <p class="mb-1 ms-2">{{ comment.body }}</p>
                         <div class="row">
                             <div class="col-12 border-top">
+
+                                <!-- button to allow replies from post.author  -->
                                 {% if post.author == request.user %}
-                                    <button class="bg-alice border-0 ms-2" data-bs-target>
+                                    <button class="bg-alice border-0 ms-2" 
+                                            data-bs-toggle="modal" data-bs-target="#reply-modal-{{ comment.id }}">
                                         <i class="fa-regular fa-message"></i>
                                     </button>
+
+                                    <!-- Modal for replying to comments (Author)-->
+                                    <div id="reply-modal-{{ comment.id }}" class="modal" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Replying to {{ comment.author }}</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="post">
+                                                    {{ comment_form }}
+                                                </form>
+                                            </div>
+                                                <div class="modal-footer">
+                
+                                                    <form class="inline-block" action="" method="POST">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                                    </form>
+                                                    <button type="button" class="btn btn-secondary" 
+                                                            data-bs-dismiss="modal" 
+                                                            data-bs-target="#reply-modal-{{ comment.id }}">
+                                                        Nevermind
+                                                    </button>
+                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {% endif %}
                             </div>
                         </div>
