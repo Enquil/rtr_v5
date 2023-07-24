@@ -77,6 +77,11 @@
                         <p class="mb-0 mt-1 ms-1 d-inline-block"><strong>{{ comment.author }}</strong></p> 
                         <small> | {{ comment.created_on }}</small>
                         <p class="mb-1 ms-2">{{ comment.body }}</p>
+                        {% if comment.children %}
+                            {% for comment in comment.children %}
+                            <p>{{ comment }}</p>
+                            {% endfor %}
+                        {% endif %}
                         <div class="row">
                             <div class="col-12 border-top">
 

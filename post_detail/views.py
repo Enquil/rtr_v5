@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from home.models import Post
+from home.models import Post, Comment
 from .forms import CommentForm
 from profiles.models import UserProfile
 
@@ -25,9 +25,11 @@ def post_detail(request, slug, *args, **kwargs):
     if post.likes.filter(id=request.user.id).exists():
         liked = True
 
+    if post.comments.exists():
+        commented = True
+
     # Comment Handling
     if request.method == "POST":
-        parent_obj = None
         # Redirect to login if trying to comment while not logged in
         if not request.user.is_authenticated:
             return HttpResponseRedirect(reverse('account_login'))
@@ -40,6 +42,13 @@ def post_detail(request, slug, *args, **kwargs):
                 comment_form.instance.author = request.user
                 comment = comment_form.save(commit=False)
                 comment.post = post
+
+                # If 'parent' is in post request
+                if 'parent' in request.POST:
+                    # Get the comment isntance corresponding to captured id
+                    comment.parent = Comment.objects.get(
+                                        id=request.POST['parent']
+                                     )
                 comment.save()
                 messages.add_message(
                     request, messages.SUCCESS,
