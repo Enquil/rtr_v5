@@ -17,6 +17,11 @@ class TestUserProfileModel(TestCase):
 
     def test_str_method(self):
 
+        user = User.objects.get(id=1)
+
+        # Get user profile
         user_profile = UserProfile.objects.get(id=1)
+
+        # call str method and assert str() method matches the username of user
         test_str = str(user_profile)
-        self.assertEqual(test_str, user_profile.user.username)
+        self.assertEqual(test_str, user.username)
