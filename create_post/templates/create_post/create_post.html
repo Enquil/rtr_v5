@@ -66,11 +66,11 @@
     </div>
     <div id="page-overlay"></div>
     <script>
-        let ol = document.getElementById('page-overlay')
-        let form = document.getElementById('create-post-form')
+        let ol = document.getElementById('page-overlay');
+        let form = document.getElementById('create-post-form');
         $(form).submit(function(e) {
             e.preventDefault();
-            ol.classList.add('overlay')
+            ol.classList.add('overlay');
             form.submit();
         });
     </script>
