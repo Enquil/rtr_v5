@@ -26,7 +26,7 @@ def post_detail(request, slug, *args, **kwargs):
     if post.likes.filter(id=request.user.id).exists():
         liked = True
 
-    if post.comments.exists():
+    if len(comments) > 0:
         commented = True
 
     # Comment Handling
