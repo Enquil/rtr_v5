@@ -143,44 +143,15 @@ I could not log in due to csrf token issues, so any view that requires login, is
 
 #### Home
 
-![lg home](./images/html_and_css/responsiveness/lg_home.png)
-![md home](./images/html_and_css/responsiveness/md_home.png)
-![md home](./images/html_and_css/responsiveness/sm_home.png)
-![sm home](./images/html_and_css/responsiveness/md_home.png)
-![sm home](./images/html_and_css/responsiveness/sm_home_lower.png)
-
 #### Post Detail
-
-![lg post detail](./images/html_and_css/responsiveness/lg_post_detail.png)
-![lg post detail 2](./images/html_and_css/responsiveness/lg_post_detail_lower.png)
-![md post detail](./images/html_and_css/responsiveness/md_post_detail.png)
-![md post detail 2](./images/html_and_css/responsiveness/md_post_detail_lower.png)
-![sm post detail](./images/html_and_css/responsiveness/sm_post_detail.png)
-![sm post detail 2](./images/html_and_css/responsiveness/sm_post_detail_lower.png)
 
 #### Sign Up
 
-![lg sign up](./images/html_and_css/responsiveness/lg_sign_up.png)
-![md sign up](./images/html_and_css/responsiveness/md_sign_up.png)
-![sm sign up](./images/html_and_css/responsiveness/sm_sign_up.png)
-
 #### Login
-
-![lg login](./images/html_and_css/responsiveness/lg_login.png)
-![md login](./images/html_and_css/responsiveness/md_login.png)
-![sm login](./images/html_and_css/responsiveness/sm_login.png)
 
 #### Create Post
 
-![lg create post](./images/html_and_css/responsiveness/lg_create_post.png)
-![md create post](./images/html_and_css/responsiveness/md_create_post.png)
-![sm create post](./images/html_and_css/responsiveness/sm_create_post.png)
-
 #### Edit Post
-
-![lg edit post](./images/html_and_css/responsiveness/lg_edit_post.png)
-![md edit post](./images/html_and_css/responsiveness/md_edit_post.png)
-![sm edit post](./images/html_and_css/responsiveness/sm_edit_post.png)
 
 ### Lighthouse Test
 
@@ -192,8 +163,25 @@ One is for putting an overlay when submitting forms, where the only thing changi
 The other one is for messages present in base.html  
 Results For each function/view:
 
+#### create_post js
 
+![create_post jshint](./images/jshint/create_post_js.png)
 
+#### edit_post js
+
+![edit_post jshint](./images/jshint/edit_post_js.png)
+
+#### post_detail_js
+
+![post_detail jshint](./images/jshint/post_detail_js.png)
+
+#### profiles_js
+
+![profiles jshint](./images/jshint/profiles_js.png)
+
+#### messages_js
+
+![profiles jshint](./images/jshint/messages_js.png)
 
 ### pep-8
 
@@ -222,12 +210,15 @@ I used 2 different unit test libraries/modules:
 I basically just used 2 because i wanted to compare the libraries  
 I did notice a slight difference in how they test for apps
 
-#### Django Nose overall report
+#### Django Nose report
 
+Nose, part 1  
+![Django Nose test p1](./images/unittest/django_nose_pt1.png)
+
+Part 2  
+![Django Nose test p2](./images/unittest/django_nose_pt2.png)
 
 #### Coverage Reports
-
-When you compare the 2, Nose and Coverage does not quite agree on what should be tested:
 
 Coverage, part 1  
 ![Coverage test p1](./images/unittest/coverage_pt1.png)
@@ -240,7 +231,6 @@ Part 2
 #### Home View
 
 #### Post Detail View
-
 
 ## Known Issues
 
@@ -255,7 +245,7 @@ Code snippet (form is replaced by id for relevant form):
 
 ### Edit Post Form
 
-Not rendering as expected, should be wider, keeping as is for now, because it works and is not critical
+Not rendering as expected, should be wider, keeping as is for now, because it works and is not super-critical
 
 ## Future Implementations
 
