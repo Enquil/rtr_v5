@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from home.models import Post, Comment
 from .forms import CommentForm
 from profiles.models import UserProfile
+from django.core.exceptions import PermissionDenied
 
 
 def post_detail(request, slug, *args, **kwargs):
@@ -45,10 +46,14 @@ def post_detail(request, slug, *args, **kwargs):
 
                 # If 'parent' is in post request
                 if 'parent' in request.POST:
-                    # Get the comment isntance corresponding to captured id
-                    comment.parent = Comment.objects.get(
-                                        id=request.POST['parent']
-                                     )
+                    if post.author == request.user:
+                        # Get the comment isntance corresponding to captured id
+                        comment.parent = Comment.objects.get(
+                            id=request.POST['parent']
+                        )
+                    else:
+                        raise PermissionDenied
+                # Save comment and return to post_detail
                 comment.save()
                 messages.add_message(
                     request, messages.SUCCESS,
