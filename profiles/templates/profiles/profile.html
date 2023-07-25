@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-            <div class="col-12 text-center"><h3>Select your posts or comments to view</h3></div>
+            <div class="col-12 text-center"><h3>Click to show posts, comments or your liked posts</h3></div>
             <div class="col-12 col-md-5 col-lg-4 text-center 
                         border-dark offset-md-1 offset-lg-2">
                 <!-- Collapse toggler for posts -->
@@ -22,62 +22,64 @@
                      class="bg-alice-dark box-shadow-smol mt-3">
                     <h3>Posts</h3>
                 </div>
-
+                {% if posts %}
                     <!-- iterates posts and adds user action buttons -->
                     {% for post in posts %}
 
-                        <div id="profile-post-list" 
-                             class="collapse border mt-2 text-center box-shadow-smol">
+                    <div id="profile-post-list" 
+                            class="collapse border mt-2 text-center box-shadow-smol bg-white border {% if forloop.last %} mb-5 {% endif %}">
 
-                            <!-- post info -->
-                            <h5>{{ post.title }}</h5>
-                            <p>{{ post.excerpt }}</p>
+                        <!-- post info -->
+                        <h5>{{ post.title }}</h5>
+                        <p>{{ post.excerpt }}</p>
 
-                            <!-- container with user action buttons -->
-                            <div class="options-container">
+                        <!-- container with user action buttons -->
+                        <div class="options-container">
 
-                                <a class="btn btn-dark border-0 mb-3" href="{% url 'edit_post' post.slug %}">EDIT</a>
-                                <button type="button" 
-                                        class="btn btn-danger border-0 mb-3 ms-1" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#post-delete-modal-{{ post.id }}">
-                                    DELETE
-                                </button>
+                            <a class="btn btn-dark border-0 mb-3" href="{% url 'edit_post' post.slug %}">EDIT</a>
+                            <button type="button" 
+                                    class="btn btn-danger border-0 mb-3 ms-1" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#post-delete-modal-{{ post.id }}">
+                                DELETE
+                            </button>
+                        </div>
+                    </div>
+
+                        <!-- Modal div for confirming deletion of post models 
+                            sourced from: https://getbootstrap.com/docs/4.0/components/modal/
+                        -->
+                    <div id="post-delete-modal-{{ post.id }}" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Confirm Deletion</h3>
+                            </div>
+                            <div class="modal-body">
+                                <h4>{{ post.title }}</h4>
+                            </div>
+
+                                <div class="modal-footer">
+
+                                    <form id="delete-post-form" class="inline-block" 
+                                            action="{% url 'delete_post' post.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                    </form>
+                                    <button type="button" class="btn btn-secondary" 
+                                            data-bs-dismiss="modal" 
+                                            data-bs-target="#post-delete-modal-{{ post.id }}">
+                                        Nevermind
+                                    </button>
+
+                                </div>
                             </div>
                         </div>
-
-                            <!-- Modal div for confirming deletion of post models 
-                                sourced from: https://getbootstrap.com/docs/4.0/components/modal/
-                            -->
-                        <div id="post-delete-modal-{{ post.id }}" class="modal" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title">Confirm Deletion</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <h4>{{ post.title }}</h4>
-                                </div>
-
-                                    <div class="modal-footer">
-
-                                        <form id="delete-post-form" class="inline-block" action="{% url 'delete_post' post.id %}" method="POST">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-primary">Confirm</button>
-                                        </form>
-                                        <button type="button" class="btn btn-secondary" 
-                                                data-bs-dismiss="modal" 
-                                                data-bs-target="#post-delete-modal-{{ post.id }}">
-                                            Nevermind
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    {% endfor %}
-                </table>
+                    </div>
+                {% endfor %}
+                {% else %}
+                    <h4>You have not posted any comments yet!</h4>
+                {% endif %}
             </div>
 
             <!-- user comments div starts here -->
@@ -92,74 +94,78 @@
                 </div>
 
                 <!-- Iterates over users comments with edit/delete fucntionality -->
-                {% for comment in comments %}
+                {% if comments %}
+                    {% for comment in comments %}
 
-                    <div id="profile-comment-list" 
-                         class="border mt-2 text-center collapse box-shadow-smol">
+                        <div id="profile-comment-list" 
+                            class="border mt-2 text-center collapse box-shadow-smol bg-white border {% if forloop.last %} mb-5 {% endif %}">
 
-                        <!-- Comment Info -->
-                        <h5>Your wrote @ {{ comment.post }} on <small>{{ comment.created_on }}</small></h5>
-                        <p>{{ comment.body }}</p>
+                            <!-- Comment Info -->
+                            <h5>Your wrote @ {{ comment.post }} on <small>{{ comment.created_on }}</small></h5>
+                            <p>{{ comment.body }}</p>
 
-                        <!-- container with user action buttons -->
-                        <div class="options-container">
-                            <button type="button" 
-                                    class="btn btn-danger border-0 mb-3 ms-1" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#comment-delete-modal-{{ comment.id }}">
-                                DELETE
-                            </button>
+                            <!-- container with user action buttons -->
+                            <div class="options-container">
+                                <button type="button" 
+                                        class="btn btn-danger border-0 mb-3 ms-1" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#comment-delete-modal-{{ comment.id }}">
+                                    DELETE
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                        <!-- Modal div for confirming deletion of comment models 
-                             sourced from: https://getbootstrap.com/docs/4.0/components/modal/
-                        -->
-                    <div id="comment-delete-modal-{{ comment.id }}" class="modal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title">Confirm Deletion</h3>
-                            </div>
-                            <div class="modal-body">
-                                <p>{{ comment.body }}</p>
-                            </div>
+                            <!-- Modal div for confirming deletion of comment models 
+                                sourced from: https://getbootstrap.com/docs/4.0/components/modal/
+                            -->
+                        <div id="comment-delete-modal-{{ comment.id }}" class="modal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Confirm Deletion</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{ comment.body }}</p>
+                                </div>
 
-                                <div class="modal-footer">
+                                    <div class="modal-footer">
 
-                                    <form id="delete-comment-form" class="inline-block" action="{% url 'delete_comment' comment.id %}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-primary">Confirm</button>
-                                    </form>
-                                    <button type="button" class="btn btn-secondary" 
-                                            data-bs-dismiss="modal" 
-                                            data-bs-target="#comment-delete-modal-{{ comment.id }}">
-                                        Nevermind
-                                    </button>
+                                        <form id="delete-comment-form" class="inline-block" action="{% url 'delete_comment' comment.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-primary">Confirm</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary" 
+                                                data-bs-dismiss="modal" 
+                                                data-bs-target="#comment-delete-modal-{{ comment.id }}">
+                                            Nevermind
+                                        </button>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <h4>You have not posted any comments yet!</h4>
+                {% endif %}
             </div>
         </div>
     </div>
+    <div id="page-overlay"></div>
     <script>
         let ol = document.getElementById('page-overlay')
         let deleteCommentForm = document.getElementById('delete-comment-form')
-        let deletePostForm = document.getElementById('delete-pos-form')
+        let deletePostForm = document.getElementById('delete-post-form')
 
         $(deleteCommentForm).submit(function(e) {
             e.preventDefault();
             ol.classList.add('overlay')
-            form.submit();
+            deleteCommentForm.submit();
         });
         $(deletePostForm).submit(function(e) {
             e.preventDefault();
             ol.classList.add('overlay')
-            form.submit();
+            deletePostForm.submit();
         });
     </script>
 {% endblock %}
