@@ -159,7 +159,6 @@
                         {% for post in liked_posts %}
                             <div class="border mt-2 text-center box-shadow-smol bg-white border 
                                         {% if forloop.last %} mb-5 {% endif %}">
-
                                 <a class="text-decoration-none text-dark" 
                                    href="{% url 'post_detail' post.slug %}">
                                     <h3>{{ post.title }}</h3>
