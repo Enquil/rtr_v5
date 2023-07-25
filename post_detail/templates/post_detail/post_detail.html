@@ -78,7 +78,8 @@
                 {% if comment.is_top_level %}
                     <div class="row">
                         <div class="col-12 col-sm-8 col-md-6 col-xl-4
-                                    offset-sm-2 offset-md-3 offset-xl-4 border mb-4">
+                                    offset-sm-2 offset-md-3 offset-xl-4 border-top 
+                                    border bg-white box-shadow-smol mb-4">
 
                             <p class="mb-0 mt-1 ms-1 d-inline-block"><strong>{{ comment.author }}</strong></p> 
                             <small> | {{ comment.created_on }}</small>
@@ -86,18 +87,19 @@
                             <!-- Then, if they have a child, it gets rendered below in the box -->
                             {% if comment.children %}
                                 {% for comment in comment.children %}
-                                <p>{{ comment }}</p>
+                                <hp>Reply by: <strong>{{ comment.author }}</strong></hp>
+                                <p class="ms-2">{{ comment.body }}</p>
                                 {% endfor %}
                             {% endif %}
 
                             <div class="row">
                                 <div class="col-12 border-top">
 
-                                    <!-- button to allow replies from post.author  -->
+                                    <!-- button to allow replies from post.author -->
                                     {% if post.author == request.user %}
-                                        <button class="bg-alice border-0 ms-2" 
+                                        <button class="bg-white border-0 ms-2 p-2" 
                                                 data-bs-toggle="modal" data-bs-target="#reply-modal-{{ comment.id }}">
-                                            <i class="fa-regular fa-message"></i>
+                                            <i class="fa-regular fa-message fa-lg"></i>
                                         </button>
 
                                         <!-- Modal for replying to comments (Author)-->
@@ -108,7 +110,7 @@
                                                     <h3 class="modal-title">Replying to {{ comment.author }}</h3>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="POST">
+                                                    <form class="reply-form" method="POST">
                                                         {% csrf_token %}
                                                         {{ comment_form }}
                                                         <input type="hidden" value="{{ comment.id }}" name="parent">
@@ -145,11 +147,17 @@
     <div id="page-overlay"></div>
     <script>
         let ol = document.getElementById('page-overlay')
-        let form = document.getElementById('comment-form')
-        $(form).submit(function(e) {
+        let commentForm = document.getElementById('comment-form')
+        let replyForm = document.getElementById('reply-form')
+        $(commentForm).submit(function(e) {
             e.preventDefault();
             ol.classList.add('overlay')
-            form.submit();
+            commentForm.submit();
+        });
+        $(replyForm).submit(function(e) {
+            e.preventDefault();
+            ol.classList.add('overlay')
+            replyForm.submit();
         });
     </script>
 {% endblock %}
