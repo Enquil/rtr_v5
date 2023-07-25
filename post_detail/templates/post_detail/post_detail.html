@@ -54,7 +54,6 @@
         <div class="row">
             <div class="col-12 col-sm-8 col-md-6 col-xl-4
                         offset-sm-2 offset-md-3 offset-xl-4">
-
                 <form id="comment-form" action="" method="POST">
                     {% csrf_token %}
                     {{ comment_form }}
@@ -66,7 +65,13 @@
                 </form>
             </div>
         </div>
+        <!-- if there are comments related to the post -->
         {% if comments %}
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+                    <h3>Comments:</h3>
+                </div>
+            </div>
             <!-- comments row(s) -->
             {% for comment in comments %}
                 <!-- Only list comments without parents -->

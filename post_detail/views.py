@@ -16,18 +16,13 @@ def post_detail(request, slug, *args, **kwargs):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.filter(approved=True).order_by("-created_on")
-    comment_count = len(comments)
 
     # set liked and commented to False for handling template rendering
     liked = False
-    commented = False
 
     # check if user exists in post.likes and set liked to True if so
     if post.likes.filter(id=request.user.id).exists():
         liked = True
-
-    if len(comments) > 0:
-        commented = True
 
     # Comment Handling
     if request.method == "POST":
@@ -73,7 +68,6 @@ def post_detail(request, slug, *args, **kwargs):
         {
             "post": post,
             "comments": comments,
-            "comment_count": comment_count,
             "liked": liked,
             "comment_form": comment_form
         },
