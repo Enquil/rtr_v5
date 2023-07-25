@@ -21,6 +21,8 @@ def profile_view(request):
         author=request.user.id
     ).order_by('-created_on')
 
+    liked_posts = profile.liked_posts.all()
+
     return render(
         request,
         "profiles/profile.html",
@@ -28,5 +30,6 @@ def profile_view(request):
             'profile': profile,
             'posts': posts,
             'comments': comments,
+            'liked_posts': liked_posts,
         },
     )
