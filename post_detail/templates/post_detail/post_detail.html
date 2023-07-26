@@ -114,16 +114,17 @@
                                                         {% csrf_token %}
                                                         {{ comment_form }}
                                                         <input type="hidden" value="{{ comment.id }}" name="parent">
+                                                        <!-- send form -->
                                                         <button type="submit" class="btn btn-primary">Confirm</button>
                                                     </form>
                                                 </div>
                                                     <div class="modal-footer">
+                                                        <!-- dismiss modal -->
                                                         <button type="button" class="btn btn-secondary" 
                                                                 data-bs-dismiss="modal" 
                                                                 data-bs-target="#reply-modal-{{ comment.id }}">
                                                             Nevermind
                                                         </button>
-                    
                                                     </div>
                                                 </div>
                                             </div>

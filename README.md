@@ -265,32 +265,121 @@ Fill in the form and click, sign up
 (Email is technically not required, but it helps a lot if you would want to enable it later)
 ![signup page](./images/user_exp_tests/sign_up.png)
 
-Great! We can create users, notice there is an option for us to create posts in the navbar as well
+Great! We can create users, notice there is an option for us to create posts in the navbar as well as a dropdown with our username  
 ![signup success](./images/user_exp_tests/sign_up_success.png)
 
 But first, lets go back to the post and leave a comment
-![signup success](./images/user_exp_tests/comment_logged_in.png)
+![comment logged in](./images/user_exp_tests/comment_logged_in.png)
+
+It works! Lets try clicking the like-button as well  
+And it works!  
+![like logged in](./images/user_exp_tests/like_logged_in.png)
+
+Now lets go and create a post of our own, click the 'create post' button in the navbar  
+![create post1](./images/user_exp_tests/create_post1.png)
+
+And fill in the form, excerpt can be left blank, but it's nice to give a preview  
+![create post2](./images/user_exp_tests/create_post2.png)
+
+And we have a successful post, and somebody already left us a comment!  
+There's a weird button there now, that wasnt present on our own comment that we left  
+Lets click it
+![create post success](./images/user_exp_tests/create_post_success.png)
+
+Okay, seems we can leave replies to users who comment on our posts,  
+That button structure is bad, let's add that to issues for now since it's not breaking anything  
+![comment reply modal](./images/user_exp_tests/comment_reply_modal.png)
+
+And we've left a response, now let's see what that navbar item with our username does  
+Seems we have the options to visit our profile, or log out, we're gonna visit the profile  
+![reply success](./images/user_exp_tests/reply_success.png)
+
+Alright, looks like we have the option to view some of our previous actions by clicking the related 'button'  
+![profile1](./images/user_exp_tests/profile1.png)
+
+Alright, it shows our post as well as some actions we can take to modify it, lets try and edit it
+![profile posts](./images/user_exp_tests/profile_posts.png)
+
+Okay, the form looks a bit wonky, but at least it's obvious what to do
+Notice the use of 2 html linebreaks, the standard textfield supports a limited use of html elements  
+![edit post](./images/user_exp_tests/edit_post.png)
+
+Now let's find our post, note that we cant actually access the post from the profile  
+This should be fixed, so lets add that to known issues
+Let's find the post and leave a comment, adn then back toour profile
+![edit post sucess](./images/user_exp_tests/edit_post_success.png)
+
+Seems we cant edit any comments, but we can delete them in case we made some error, or spoke too soon etc.  
+Lets delete the comment we just left on our post  
+![profile comments](./images/user_exp_tests/profile_comments.png)
+
+And it seems to work! Let's also visit the post just to make sure  
+![delete comment success](./images/user_exp_tests/delete_comment_success.png)
+
+And it's gone, now lets see what the 'likes' button does  
+![profile likes](./images/user_exp_tests/confirm_comment_delete.png)
+
+It shows a list of the posts that we've liked, and we have the option to visit the post
+![profile likes post detail](./images/user_exp_tests/profile_likes.png)
+
+And here we are, now lets log out and make sure that works properly  
+![logout 1](./images/user_exp_tests/logout1.png)
+
+So we get taken to the logout screen  
+![logout confirm](./images/user_exp_tests/logout_confirm.png)
+
+And we have a successful log out  
+![logout success](./images/user_exp_tests/logout_success.png)
+
+### Malicious User Tests
+
+This section is mean to test safeguards when a user tries to take an action or access something they shouldnt be able to  
+
+#### Tests undertaken and expected outcome in order of tests
+
+* Creating a post as anonymous user, redirect to login
+* Editing a post as anonymous user, redirect to login
+* Editing a post as wrong user, 403 forbidden
+* Deleteing a post as anonymous user, redirect to login
+* Deleting a post as wrong user, 403 forbidden
+* Deleting a comment as anonymous user, redirect to login
+* Deleting a comment as wrong user, 403 forbidden
 
 ## Known Issues
 
-### Form submitting multiple times (TEMPORARY FIX)
+### "Remember me" on forms
+
+The checkbox that lets django remember users seems to not work.  
+I thought this was out-of-the-box function but it seems you need to enable it.  
+medium-high priority since it does hamper user experience a little bit, if not in a major way.
+
+### Form submitting multiple times (HOTFIX)
 
 When spam-clicking a form submit button (comment-form specifically), the form submits multiple times, like so:
 ![multi submit bug](./images/manual_view_testing/test_admin_actions/confirm_comments_approved.png)
 
 Temporary Fix: Added a js function to prevent default and put an overlay on top of the page until form is handled.  
 This should be switched to a function that disables the button instead, or even straight python could possibly work.
-Code snippet (form is replaced by id for relevant form):  
+form is replaced by id for relevant form on the corresponding page.
 
 ### Edit Post Form
 
-Not rendering as expected, should be wider, keeping as is for now, because nothin critical is broken
+Not rendering as expected, should be wider, keeping as is for now, because nothing critical is broken
 
 ### Sign-in redirect from comment, anonymous user
 
-When commenting and not logged in
+When commenting and not logged in, user is not redirected to the post in question  
 
 ### No message when trying to comment as anonymous user
+
+It's kinda obvious you cant comment without logging in because of the redirect  
+But there still should be a message
+
+### Cannot access posts directly from profile
+
+You can for the posts you've liked, but ideally you want quick access to you own posts in another way  
+
+### 
 
 ## Future Implementations
 
