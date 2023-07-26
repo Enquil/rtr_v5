@@ -15,7 +15,7 @@ class PostList(ListView):
     ordering = ['-created_on']
     template_name = "home/index.html"
     # number of items to be displayed per page
-    paginate_by = 2
+    paginate_by = 5
 
     def get_queryset(self):
         '''
