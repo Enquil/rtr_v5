@@ -4,7 +4,7 @@
 
 ## Description
 
-Welcome to rtr_v5, This is a reddit-style newspage where users are supposed to be able to share whatever thoughts ideas or news they want
+Welcome to rtr_v5, This is a reddit-style newspage where users are supposed to be able to share whatever thoughts ideas or news they want.  
 
 ## Technologies Used
 
@@ -95,9 +95,9 @@ General implementations:
 
 Due to time-constraints, i chose to omit the following functionality that was originally planned:
   
-* Comment reply system
+* Comment reply system (currently only post author can reply to comments)
 * News-api, have not recieved a reply about extra requests still
-* Removed cloudinary image fields for posts, this is due to switching to function views and i did not have time to learn the differences in how forms are handled
+* Removed cloudinary image fields for posts, this is due to switching to function views and i did not have time to learn the differences in how forms are tested
 
 ## Models used and Schema
 
@@ -228,9 +228,48 @@ Part 2
 
 ### Testing from a user perspective
 
-#### Home View
+First, let's visit the deployed site:
+![home anon user 1](./images/user_exp_tests/home_anon_user_1.png)
 
-#### Post Detail View
+Nice, and there's a footer as well
+![home anon user 2](./images/user_exp_tests/home_anon_user_2.png)
+
+Lets click 'next page and see what happens'
+![pagination 1](./images/user_exp_tests/pagination_before.png)
+
+Great, takes us to the next page as expected
+![pagination 2](./images/user_exp_tests/pagination_before.png)
+
+Im more interested in specific topic, art and entertainment to be more precise
+![category 1](./images/user_exp_tests/category_test_before.png)
+
+Great, only 2 posts in here but i can read something at least
+![category 2](./images/user_exp_tests/category_test_after.png)
+
+Lets click the home button and see what happens
+![home button](./images/user_exp_tests/home_button.png)
+
+Okay it takes us home, makes sense!
+Now, lets click a post:
+![post_detail anon](./images/user_exp_tests/sign_up_navigation.png)
+
+Okay now i can read the whole thing, but nothing happens when i click the like button.  
+Is it broken? Let's let the site owner know by leaving a comment  
+![comment anon](./images/user_exp_tests/comment_anon_user.png)
+
+Oh okay, seems you cant leave comments without being an account holder
+Lets click the sign up button (or in this case, the blue sign up link)
+![comment anon](./images/user_exp_tests/comment_login_redirect.png)
+
+Fill in the form and click, sign up  
+(Email is technically not required, but it helps a lot if you would want to enable it later)
+![signup page](./images/user_exp_tests/sign_up.png)
+
+Great! We can create users, notice there is an option for us to create posts in the navbar as well
+![signup success](./images/user_exp_tests/sign_up_success.png)
+
+But first, lets go back to the post and leave a comment
+![signup success](./images/user_exp_tests/comment_logged_in.png)
 
 ## Known Issues
 
@@ -245,7 +284,13 @@ Code snippet (form is replaced by id for relevant form):
 
 ### Edit Post Form
 
-Not rendering as expected, should be wider, keeping as is for now, because it works and is not super-critical
+Not rendering as expected, should be wider, keeping as is for now, because nothin critical is broken
+
+### Sign-in redirect from comment, anonymous user
+
+When commenting and not logged in
+
+### No message when trying to comment as anonymous user
 
 ## Future Implementations
 
