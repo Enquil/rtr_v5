@@ -354,6 +354,10 @@ signup
 
 #### W3C validation, CSS
 
+There is an img tag using />, not recommended but does not break anything  
+Warnings are all bootstrap  
+![w3c css](./images/w3c_css_validation/w3c_css.png)  
+
 ### What the User sees
 
 First, let's visit the deployed site:
