@@ -318,6 +318,42 @@ Coverage, part 1
 Part 2  
 ![Coverage test p2](./images/unittest/coverage_pt2.png)
 
+#### W3C validation, HTML
+
+Issues  
+
+* Script is going to be moved into js file once i apply a permanent fix to the multiple form-submit issue
+* The div in the ul element stays for now, it doesent break anything and if i wrap it in a li as suggested, it dissappears
+* CommentForm in post_detail says it has tables, IT DOES NOT, this seems to be django interference when testing  but im not sure  
+
+Results:  
+
+create_post  
+![create_post w3c](./images/w3c_html_validation/w3c_create_post.png)  
+
+edit_post  
+![edit_post w3c](./images/w3c_html_validation/w3c_create_post.png)  
+
+home  
+![home w3c](./images/w3c_html_validation/w3c_create_post.png)  
+
+login  
+![login w3c](./images/w3c_html_validation/w3c_create_post.png)  
+
+post_detail_1  
+![post_detail_1 w3c](./images/w3c_html_validation/w3c_create_post.png)  
+
+post_detail_2  
+![post_detail_1 w3c](./images/w3c_html_validation/w3c_create_post.png)  
+
+profile  
+![profile w3c](./images/w3c_html_validation/w3c_profile.png)  
+
+signup
+![signup w3c](./images/w3c_html_validation/w3c_signup.png)  
+
+#### W3C validation, CSS
+
 ### What the User sees
 
 First, let's visit the deployed site:
@@ -470,6 +506,55 @@ Delete comment redirect
 Forbidden 403  
 ![delete comment forbidden](./images/malicious_user_tests/delete_post_wrong_user_403.png)
 
+#### Admin actions
+
+Currently, there are 4 additional actions an admin can take besides deleting models:
+
+* Disable Posts (post should not show up in post_list anymore)
+* Publish Posts (post should show up again)
+* Disable Comments (So they dont show up on the post again)
+* Disable Comments (So they show up on post again)
+
+Let's make sure they work, i used the posts and comments in the user story above  
+I used the post made by test_user3 for this  
+
+Unpublish a post, like so  
+![admin unpublish post before](./images/admin_action_tests/admin_disable_post_before.png)  
+
+It changes status ok, lets go check it out, the post should be the top one if unsuccessful  
+![admin disable post after](./images/admin_action_tests/admin_disable_post_after.png)  
+
+And it is not there, great, lets publish it again  
+![admin disable post confirm](./images/admin_action_tests/admin_disable_post_confirm.png)  
+
+Same as above, check any posts you want to 'edit'  
+![admin publish post before](./images/admin_action_tests/admin_publish_post_before.png)  
+
+Changes status ok  
+![admin publish post after](./images/admin_action_tests/admin_disable_post_after.png)  
+
+And confirmation  
+![admin publish post confirm](./images/admin_action_tests/admin_disable_post_after.png)  
+
+Lets disable the comments on that same post  
+![admin disable comments before](./images/admin_action_tests/admin_disable_comments_before.png)  
+
+Appears the boolean changes  
+![admin disable comments after](./images/admin_action_tests/admin_disable_comments_after.png)  
+
+The comments still count toward the post, but doesent show up, nice  
+(This could be changed to display a placeholder card instead, as an alternative way of handling it)
+![admin disable comments confirm](./images/admin_action_tests/admin_disable_comments_confirm.png)  
+
+Let's approve them again  
+![admin approve comments before](./images/admin_action_tests/admin_approve_comments_before.png)
+
+Checks out, lets go visit them  
+![admin approve comments after](./images/admin_action_tests/admin_approve_comments_after.png)  
+
+And they're back, nice!  
+![admin approve comments confirm](./images/admin_action_tests/admin_approve_comments_confirm.png)  
+
 ## Deployment
 
 ### Step-by-step deployment of live site on Heroku
@@ -543,14 +628,19 @@ This will detail the general deployment steps without taking non-essential appli
 
 ## Known Issues
 
+### W3C test for profiles
+
+It just responded with error messages all the time, think this is because you dont actually use a id or smth in the url, so it doesent really know what to do with that.  
+Other views requiring login worked just fine so i will investigate.  
+
 ### profile.views.py missing testfile
 
 There is a missing testfile for profile views, i thought it was there since both django nose and coverage considers profiles.views tested.
-I also havent omitted any testing manually so im not sure what causes this. 
+I also havent omitted any testing manually so im not sure what causes this.  
 Suggested course of action:  
 
 * Find out why this is, it's weird that both testing libraries considers this tested
-* Add a testfile for profiles  
+* Add a testfile for profiles views  
 
 ### right side margin @ edit_post template
 
@@ -565,7 +655,8 @@ I need to confirm it's not a chrome problem since it seems to be a problem acros
 
 ### README, general improvements
 
-While the file content is readable just fine and covers the site, it could do with better navigation at the very least  
+While the file content is readable just fine and covers the site, it could do with better navigation at the very least.  
+Probably would've been smarter to just link to the pep8 test folder instead of listing every single test, it's very cluttered atm.  
 
 ### "Remember me" on forms
 
@@ -617,3 +708,4 @@ I chose to sort them by some urgency measure
 * User Settings, HIGH
   * Change email, password etc.
 * Drafts, this enables more longform posts, for which im aiming at  
+* Automated excerpts if user leaves it blank
