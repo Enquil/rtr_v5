@@ -2,6 +2,15 @@
 
 ## Table of Contents
 
+1. [Description](#description)
+2. [Technologies Used](#technologies-used)
+3. [Planning](#planning)
+4. [Models and Schema](#models-used-and-schema)
+5. [Design](#design)
+6. [Testing](#testing)
+7. [Known Issues](#known-issues)
+8. [Future implementations](#future-implementations)
+
 ## Description
 
 Welcome to rtr_v5, This is a reddit-style newspage where users are supposed to be able to share whatever thoughts ideas or news they want.  
@@ -331,21 +340,59 @@ So we get taken to the logout screen
 And we have a successful log out  
 ![logout success](./images/user_exp_tests/logout_success.png)
 
-### Malicious User Tests
+### Anonymous and Malicious User Tests
 
 This section is mean to test safeguards when a user tries to take an action or access something they shouldnt be able to  
 
 #### Tests undertaken and expected outcome in order of tests
 
+* Accessing profiles as anonymous user, redirect to login
 * Creating a post as anonymous user, redirect to login
 * Editing a post as anonymous user, redirect to login
 * Editing a post as wrong user, 403 forbidden
-* Deleteing a post as anonymous user, redirect to login
+* Deleting a post as anonymous user, redirect to login
 * Deleting a post as wrong user, 403 forbidden
 * Deleting a comment as anonymous user, redirect to login
 * Deleting a comment as wrong user, 403 forbidden
 
+Tests were done towards objects created by test_user3, and the malicious user was admin
+
+Results:  
+
+Create Post as anonymous user, cannot produce a 403 since all users can access it  
+![create post anon user](./images/malicious_user_tests/create_post_not_logged_in.png)
+Redirects as expected  
+![create post redirect](./images/malicious_user_tests/create_post_redirect.png)
+And we get a successful login  
+![create post anon user](./images/malicious_user_tests/create_post_redirect_success.png)
+
+Edit post as anonymous user  
+![edit post anon user](./images/malicious_user_tests/edit_post_not_logged_in.png)
+Redirects as expected  
+![edit post redirect](./images/malicious_user_tests/edit_post_redirect.png)
+And a 403 is presented  
+![edit post forbidden](./images/malicious_user_tests/edit_post_wrong_user_403.png)
+
+Delete post as anonymous user  
+![delete post anon user](./images/malicious_user_tests/delete_post_not_logged_in.png)
+Redirect  
+![delete post redirect](./images/malicious_user_tests/delete_post_redirect.png)
+Forbidden 403  
+![delete post forbidden](./images/malicious_user_tests/delete_post_wrong_user_403.png)
+
+Delete comment as anonymous user  
+![delete comment anon user](./images/malicious_user_tests/delete_comment_not_logged_in.png)
+Delete comment redirect  
+![delete comment redirect](./images/malicious_user_tests/delete_comment_redirect.png)
+Forbidden 403  
+![delete comment forbidden](./images/malicious_user_tests/delete_post_wrong_user_403.png)
+
+
 ## Known Issues
+
+### README, general improvements
+
+While the file content is readable just fine and covers the site, it could do with better navigation at the very least  
 
 ### "Remember me" on forms
 
@@ -355,8 +402,7 @@ medium-high priority since it does hamper user experience a little bit, if not i
 
 ### Form submitting multiple times (HOTFIX)
 
-When spam-clicking a form submit button (comment-form specifically), the form submits multiple times, like so:
-![multi submit bug](./images/manual_view_testing/test_admin_actions/confirm_comments_approved.png)
+When spam-clicking a form submit button (comment-form specifically), the form submits multiple times  
 
 Temporary Fix: Added a js function to prevent default and put an overlay on top of the page until form is handled.  
 This should be switched to a function that disables the button instead, or even straight python could possibly work.
@@ -379,16 +425,13 @@ But there still should be a message
 
 You can for the posts you've liked, but ideally you want quick access to you own posts in another way  
 
-### 
-
 ## Future Implementations
 
 I chose to sort them by some urgency measure  
 
 * Comment Reply System HIGH
 * Post Images, HIGH
-* Edit comment view, LOW/MEDIUM  
-i think twitter might've gotten this one right actually
+* Edit comment view, LOW/MEDIUM, i think twitter/X w/e might've gotten this one right actually
 * News API, LOW/MEDIUM
 * Financial API, MEDIUM
 * User Settings, HIGH
