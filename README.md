@@ -149,22 +149,13 @@ The exception are posts and comments which can be found in the actual userprofil
 
 ## Testing
 
-### Responsiveness Test
+### Responsiveness
 
 Responsiveness testing on https://responsivedesignchecker.com/
-I could not log in due to csrf token issues, so any view that requires login, is tested through the built in chrome tool  
+Below is the home view tested in small, medium and large screen sizes  
+See the folder images/responsiveness in repo for full details and images  
 
-#### Home
 
-#### Post Detail
-
-#### Sign Up
-
-#### Login
-
-#### Create Post
-
-#### Edit Post
 
 ### Lighthouse Test
 
@@ -203,15 +194,86 @@ Results from https://pep8ci.herokuapp.com/ by app:
 
 #### create_post
 
+forms.py  
+![create post pep8 forms](./images/pep8ci/create_post/create_post_forms.png)
+test_forms.py  
+![create post pep 8 test forms](./images/pep8ci/create_post/create_post_test_forms.png)
+test_views.py  
+![create post pep 8 test views](./images/pep8ci/create_post/create_post_test_views.png)
+urls.py  
+![create post pep 8 urls](./images/pep8ci/create_post/create_post_urls.png)
+views.py  
+![create post pep 8 views](./images/pep8ci/create_post/create_post_views.png)
+
 #### delete_actions
+
+test_views.py  
+![delete actions pep 8 test views](./images/pep8ci/delete_actions/delete_actions_test_views.png)
+urls.py  
+![delete actions pep 8 urls](./images/pep8ci/delete_actions/delete_actions_urls.png)
+views.py  
+![delete actions pep 8 views](./images/pep8ci/delete_actions/delete_actions_views.png)
 
 #### edit_post
 
+test_views.py  
+![edit post pep 8 test views](./images/pep8ci/edit_post/edit_post_test_views.png)
+urls.py  
+![edit post pep 8 urls](./images/pep8ci/edit_post/edit_post_urls.png)
+views.py  
+![edit post pep 8 views](./images/pep8ci/edit_post/edit_post_views.png)
+
 #### home
+
+admin.py  
+![home pep 8 admin](./images/pep8ci/edit_post/edit_post_test_views.png)
+context_processors.py  
+![home pep 8 context processors](./images/pep8ci/home/home_context_processors.png)
+models.py  
+![home pep 8 models](./images/pep8ci/home/home_models.png)
+test_admin.py  
+![home pep 8 test_admin](./images/pep8ci/home/home_test_admin.png)
+test_models.py  
+![home pep 8 test_admin](./images/pep8ci/home/home_test_models.png)
+test_views.py  
+![home pep 8 test views](./images/pep8ci/edit_post/edit_post_test_views.png)
+urls.py  
+![home pep 8 urls](./images/pep8ci/edit_post/edit_post_urls.png)
+views.py  
+![home pep 8 views](./images/pep8ci/edit_post/edit_post_views.png)
+
+#### main_project (rtr_v5)
+
+settings.py  
+![rtr_v5 pep 8 settings](./images/pep8ci/main_project/main_project_settings.png)
 
 #### post_detail
 
-#### Profiles
+forms.py  
+![post detail pep8 forms](./images/pep8ci/post_detail/post_detail_forms.png)
+test_forms.py  
+![post detail pep 8 test forms](./images/pep8ci/post_detail/post_detail_test_forms.png)
+test_models.py  
+![post detail pep 8 test models](./images/pep8ci/post_detail/post_detail_test_models.png)
+test_views.py  
+![post detail pep 8 test views](./images/pep8ci/post_detail/post_detail_test_views.png)
+urls.py  
+![post detail pep 8 urls](./images/pep8ci/post_detail/post_detail_urls.png)
+views.py  
+![post detail pep 8 views](./images/pep8ci/post_detail/post_detail_views.png)
+
+#### profiles
+
+admin.py  
+![admin pep 8 admin](./images/pep8ci/profiles/profiles_admin.png)
+models.py  
+![admin pep 8 models](./images/pep8ci/profiles/profiles_models.png)
+test_models.py  
+![admin pep 8 test models](./images/pep8ci/profiles/profiles_test_models.png)
+urls.py  
+![admin pep 8 urls](./images/pep8ci/profiles/profiles_urls.png)
+views.py  
+![admin pep 8 views](./images/pep8ci/profiles/profiles_views.png.png)
 
 ### Unit testing
 
@@ -391,8 +453,12 @@ Delete comment redirect
 Forbidden 403  
 ![delete comment forbidden](./images/malicious_user_tests/delete_post_wrong_user_403.png)
 
-
 ## Known Issues
+
+### Settings, ALLOWED_HOSTS
+
+Cannot use 'localhost' or the heroku general app-name as allowed hosts, the urls must be specific or django returns an error.  
+I need to confirm it's not a chrome problem since it seems to be a problem across all apps i currently have deployed.  
 
 ### README, general improvements
 
@@ -404,13 +470,14 @@ The checkbox that lets django remember users seems to not work.
 I thought this was out-of-the-box function but it seems you need to enable it.  
 medium-high priority since it does hamper user experience a little bit, if not in a major way.
 
-### Form submitting multiple times (HOTFIX)
+### Form submitting multiple times (HOTFIX, REPLACE ASAP)
 
 When spam-clicking a form submit button (comment-form specifically), the form submits multiple times  
 
 Temporary Fix: Added a js function to prevent default and put an overlay on top of the page until form is handled.  
 This should be switched to a function that disables the button instead, or even straight python could possibly work.
-form is replaced by id for relevant form on the corresponding page.
+form is replaced by id for relevant form on the corresponding page.  
+If a user really wants to bypass this, they can, so this has a really priority to be changed and tested in jest.
 
 ### Edit Post Form
 
